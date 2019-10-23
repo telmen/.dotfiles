@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+function touchp() {
+	mkdir -p "$(dirname "$1")/" && touch "$1"
+}
+
+function zippy() {
+	zip -r $argv[1].zip $argv[1]
+}
+
+function size() {
+    du -sh $argv[1]
+}
+
+function perms() {
+    stat -f '%A %a %N' $@
+}
+
+function mkcd() {
+    last=$(eval "echo \$$#")
+  if [ ! -n "$last" ]; then
+    echo "Enter a directory name"
+  elif [ -d $last ]; then
+    echo "\`$last' already exists"
+  else
+    mkdir $@ && cd $last
+  fi
+}

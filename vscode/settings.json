@@ -1,0 +1,133 @@
+{
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.gotoLocation.multiple": "goto",
+  "editor.autoIndent": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.openPositioning": "first",
+  "editor.renderControlCharacters": true,
+  "terminal.integrated.rendererType": "dom",
+  "highlight.regexes": {
+    "(//?TODO:?)(.*)": [
+      {
+        "overviewRulerColor": "#FFBD2A",
+        "backgroundColor": "#FFBD2A",
+        "color": "#fff",
+      },
+    ],
+    "(//?FIXME:?)(.*)": [
+      {
+        "overviewRulerColor": "#F26092",
+        "backgroundColor": "#F26092",
+        "color": "#fff",
+      },
+      {
+        "backgroundColor": "#F26092",
+        "color": "#fff"
+      }
+    ],
+    "(// )(@\\w+)": [
+      {},
+      {
+        "color": "#4de0ff"
+      }
+    ]
+  },
+  "workbench.editor.highlightModifiedTabs": true,
+  "window.title": "${activeFolderLong}${separator}${rootName}",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+  "editor.parameterHints.enabled": false,
+  "breadcrumbs.enabled": false,
+  "markdown.preview.fontFamily": "Consolas",
+  "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
+  "workbench.startupEditor": "newUntitledFile",
+  "terminal.integrated.fontFamily": "Consolas",
+  "files.trimTrailingWhitespace": true,
+  "editor.cursorSmoothCaretAnimation": true,
+  "files.defaultLanguage": "markdown",
+  "editor.suggestSelection": "first",
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.filterGraceful": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "editor.tabSize": 2,
+  "debug.console.fontFamily": "Consolas",
+  "editor.fontFamily": "Consolas",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+  "html-css-class-completion.enableEmmetSupport": true,
+  "editor.detectIndentation": true,
+  "vscode_custom_css.policy": true,
+  "vscode_custom_css.statusbar": false,
+  "vscode_custom_css.imports": [
+    "file:///Users/telmen/dotfiles/vscode/custom.css"
+  ],
+  // Dan Abramov settings
+  "editor.fontSize": 15,
+  "terminal.integrated.fontSize": 15,
+  "editor.folding": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.matchBrackets": false,
+  "editor.minimap.enabled": false,
+  "editor.occurrencesHighlight": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderIndentGuides": false,
+  "editor.renderLineHighlight": "none",
+  "explorer.openEditors.visible": 0,
+  "window.zoomLevel": 0,
+  "workbench.activityBar.visible": false,
+  "workbench.iconTheme": null,
+  "workbench.editor.showIcons": false,
+  "workbench.statusBar.visible": false,
+  "workbench.list.keyboardNavigation": "simple",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.minimap.renderCharacters": false,
+  "workbench.editor.tabCloseButton": "left",
+  "window.nativeTabs": true,
+  "editor.tabCompletion": "off",
+  "editor.insertSpaces": true,
+  "todohighlight.isEnable": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.showTabs": false,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "workbench.colorTheme": "Oceanic Next Sublime + Sweet Bar",
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": false,
+  "files.hotExit": "off",
+  "editor.wordWrap": "on",
+  // Sublime Oceanic Next
+  "editor.minimap.showSlider": "always",
+  "editor.renderLineHighlight": "none",
+  "editor.smoothScrolling": true,
+  "explorer.openEditors.visible": 0,
+  "workbench.activityBar.visible": false,
+  "editor.fontSize": 15,
+  "editor.letterSpacing": -0.2,
+  "editor.lineHeight": 18,
+  "editor.links": false,
+  "editor.renderIndentGuides": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
