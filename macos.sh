@@ -832,18 +832,30 @@ tmpdir="${TMPDIR:-/tmp}"
 
 # Alfred 3
 
-wget -O $tmpdir/alfred.dmg https://cachefly.alfredapp.com/Alfred_3.8.2_963.dmg
-hdiutil attach $tmpdir/alfred.dmg
-ditto -rsrc "/Volumes/Alfred/Alfred\ 3.app" /Applications/Alfred.app
-hdiutil detach "/Volumes/Alfred"
-rm -rf $tmpdir/alfred.dmg
+if [ -f /Applications/Alfred.app ]
+then
+  # Don't download if app already exists
+  echo "Alfred already installed."
+else
+  wget -O $tmpdir/alfred.dmg https://cachefly.alfredapp.com/Alfred_3.8.2_963.dmg
+  hdiutil attach $tmpdir/alfred.dmg
+  ditto -rsrc "/Volumes/Alfred/Alfred\ 3.app" /Applications/Alfred.app
+  hdiutil detach "/Volumes/Alfred"
+  rm -rf $tmpdir/alfred.dmg
+fi
 
-# VS Code Insiders
+# Visual Studio Code
 
-wget -O $tmpdir/vscode.zip https://go.microsoft.com/fwlink/\?LinkId\=723966
-unzip $tmpdir/vscode.zip
-ditto -rsrc "$tmpdir/Visual\ Studio\ Code\ -\ Insiders.app" /Applications/Visual\ Studio\ Code\ -\ Insiders.app
-rm -rf $tmpdir/vscode.zip
+if [ -f /Applications/Visual\ Studio\ Code.app ]
+then
+  # Don't download if app already exists
+  echo "VS Code already installed."
+else
+  wget -O $tmpdir/vscode.zip https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCode-darwin-stable.zip
+  unzip $tmpdir/vscode.zip
+  ditto -rsrc "$tmpdir/Visual\ Studio\ Code.app" /Applications/Visual\ Studio\ Code.app
+  rm -rf $tmpdir/vscode.zip
+fi
 
 unset tmpdir
 
