@@ -9,11 +9,11 @@ function vscode() {
   echo "Copying vscode settings"
 
   if [[ "$OSTYPE" == "darwin"* ]]; then
-    [ -f $HOME/vscode/custom.css ] && ln -s $HOME/vscode/custom.css ~/Library/Application\ Support/Code\ -\ Insiders/User/custom.css
-    [ -f $HOME/vscode/keybindings.json ] && ln -s $HOME/vscode/keybindings.json ~/Library/Application\ Support/Code\ -\ Insiders/User/keybindings.json
-    [ -f $HOME/vscode/settings.json ] && ln -s $HOME/vscode/settings.json ~/Library/Application\ Support/Code\ -\ Insiders/User/settings.json
-    [ -d $HOME/vscode/snippets ] && ln -s $HOME/vscode/snippets ~/Library/Application\ Support/Code\ -\ Insiders/User/snippets
-    [ -f $HOME/vscode/syncLocalSettings.json ] && ln -s $HOME/vscode/syncLocalSettings.json ~/Library/Application\ Support/Code\ -\ Insiders/User/syncLocalSettings.json
+    [ -f $HOME/vscode/custom.css ] && ln -s $HOME/vscode/custom.css ~/Library/Application\ Support/Code/User/custom.css
+    [ -f $HOME/vscode/keybindings.json ] && ln -s $HOME/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+    [ -f $HOME/vscode/settings.json ] && ln -s $HOME/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+    [ -d $HOME/vscode/snippets ] && ln -s $HOME/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
+    [ -f $HOME/vscode/syncLocalSettings.json ] && ln -s $HOME/vscode/syncLocalSettings.json ~/Library/Application\ Support/Code/User/syncLocalSettings.json
   fi
 }
 
@@ -28,8 +28,8 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   dotfiles;
-  # vscode;
-  # fonts;
+  vscode;
+  fonts;
 fi;
 
 unset dotfiles;

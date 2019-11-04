@@ -13,7 +13,7 @@ alias d="instruments -s devices"
 alias localtunnel="lt"
 alias ad="adb devices"
 # Editor
-alias s="sublime ."
+alias s="sublime . || subl ."
 function code() {
   command -v code-insiders >/dev/null 2>&1 && code-insiders . || code .
 }

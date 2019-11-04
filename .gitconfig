@@ -12,6 +12,7 @@
 [user]
 	name = telmen
 	email = flyinvoke@gmail.com
+	signingKey = 2D3B964912A6D8DB
 [core]
   editor = vim
   autocrlf = input
@@ -50,7 +51,7 @@
 	process = git-lfs filter-process
 	required = true
 [commit]
-	gpgsign = false
+	gpgsign = true
   template = ~/.gitmessage
 	verbose = true
 [gpg]

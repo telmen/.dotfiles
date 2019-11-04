@@ -9,7 +9,6 @@ export REACT_EDITOR=vim
 export LC_CTYPE=en_US.UTF-8
 export G_ENABLE_DIAGNOSTIC=1
 export GTK_THEME=Adwaita:dark
-export ANDROID_NDK_HOME=$HOME/Documents/android-ndk-r14b
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 export OpenCV_ANDROID_HOME=$HOME/Documents/OpenCV-android-sdk
 export ANDROID_HOME=$HOME/Library/Android/sdk
