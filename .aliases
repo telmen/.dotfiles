@@ -14,10 +14,10 @@ alias localtunnel="lt"
 alias ad="adb devices"
 # Editor
 alias s="sublime . || subl ."
-function code() {
+function codeFn() {
   command -v code-insiders >/dev/null 2>&1 && code-insiders . || code .
 }
-alias c='code -r'
+alias c='codeFn -r'
 alias v="vim $1"
 alias c+x="chmod +x"
 
