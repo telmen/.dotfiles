@@ -42,10 +42,11 @@
   },
   "editor.parameterHints.enabled": false,
   "breadcrumbs.enabled": false,
-  "markdown.preview.fontFamily": "Consolas",
+  "markdown.preview.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
   "workbench.startupEditor": "newUntitledFile",
-  "terminal.integrated.fontFamily": "Consolas",
+  "terminal.integrated.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "terminal.integrated.lineHeight": 1.6,
   "files.trimTrailingWhitespace": true,
   "editor.cursorSmoothCaretAnimation": true,
   "files.defaultLanguage": "markdown",
@@ -57,8 +58,8 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
-  "debug.console.fontFamily": "Consolas",
-  "editor.fontFamily": "Consolas",
+  "debug.console.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "editor.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "diffEditor.ignoreTrimWhitespace": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
@@ -73,7 +74,7 @@
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
   // Dan Abramov settings
-  "terminal.integrated.fontSize": 17,
+  "terminal.integrated.fo15": 12,
   "editor.folding": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.matchBrackets": false,
@@ -115,8 +116,11 @@
   "editor.smoothScrolling": true,
   "explorer.openEditors.visible": 0,
   "workbench.activityBar.visible": false,
-  "editor.fontSize": 17,
-  "editor.letterSpacing": -0.2,
+  "workbench.fontAliasing": "antialiased",
+  "editor.fontWeight": "500",
+  "editor.fontSize": 12,
+  "editor.lineHeight": 20,
+  "editor.letterSpacing": -0.6,
   "editor.links": false,
   "editor.renderIndentGuides": false,
   "[typescript]": {
