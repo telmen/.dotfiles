@@ -1,14 +1,15 @@
 # This is Git's per-user configuration file.
 [alias]
 	logn = log --no-merges
-  forget = checkout .
-  uncommit = reset HEAD~
+        forget = checkout .
+        uncommit = reset HEAD~
 	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
 	praise = blame
 	overview = log --all --since='2 weeks' --oneline --no-merges
 	me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
 	clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
 	graph = log --graph --all --decorate --stat --date=iso
+        unstage = reset --
 [user]
 	name = telmen
 	email = flyinvoke@gmail.com
@@ -31,20 +32,20 @@
 	commit = 214 bold
 	old = red bold
 	new = green bold
-  whitespace = red reverse
+        whitespace = red reverse
 [color "commit"]
- meta = magenta
+        meta = magenta
 [diff]
 	tool = meld
 [difftool]
- prompt = false
+        prompt = false
 [difftool "meld"]
 	trustExitCode = true
 	cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
 [push]
-  default = tracking
+        default = tracking
 [branch]
-  autosetuprebase = always
+        autosetuprebase = always
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -52,24 +53,24 @@
 	required = true
 [commit]
 	gpgsign = true
-  template = ~/.gitmessage
+        template = ~/.gitmessage
 	verbose = true
 [gpg]
 	program = gpg
 [rebase]
-  autoStash = true
+        autoStash = true
 [merge]
 	ff = no
 	commit = no
 	tool = meld
 [mergetool]
-  prompt = false
+        prompt = false
 [mergetool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+        trustExitCode = true
+        cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [format]
-  pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+        pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
 [log]
-  date = auto:human
+        date = auto:human
 [changelog]
 	format = * %s by %an

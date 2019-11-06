@@ -41,7 +41,6 @@
     "**/bower_components": true
   },
   "editor.parameterHints.enabled": false,
-  "breadcrumbs.enabled": false,
   "markdown.preview.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
   "workbench.startupEditor": "newUntitledFile",
@@ -105,24 +104,20 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "workbench.colorTheme": "Oceanic Next Sublime",
+  "workbench.colorTheme": "Xcode Default (Dark)",
   "files.encoding": "utf8",
   "files.insertFinalNewline": false,
   "files.hotExit": "off",
   "editor.wordWrap": "on",
   // Sublime Oceanic Next
   "editor.minimap.showSlider": "always",
-  "editor.renderLineHighlight": "none",
   "editor.smoothScrolling": true,
-  "explorer.openEditors.visible": 0,
-  "workbench.activityBar.visible": false,
   "workbench.fontAliasing": "antialiased",
   "editor.fontWeight": "500",
   "editor.fontSize": 12,
   "editor.lineHeight": 20,
   "editor.letterSpacing": -0.6,
   "editor.links": false,
-  "editor.renderIndentGuides": false,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -131,5 +126,29 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "sync.autoUpload": false,
+  "sync.autoDownload": false,
+  "workbench.colorCustomizations": {
+    "terminal.background":"#292C36",
+    "terminal.foreground":"#D8D8D8",
+    "terminalCursor.background":"#D8D8D8",
+    "terminalCursor.foreground":"#D8D8D8",
+    "terminal.ansiBlack":"#292C36",
+    "terminal.ansiBlue":"#8485CE",
+    "terminal.ansiBrightBlack":"#65568A",
+    "terminal.ansiBrightBlue":"#8485CE",
+    "terminal.ansiBrightCyan":"#64878F",
+    "terminal.ansiBrightGreen":"#95C76F",
+    "terminal.ansiBrightMagenta":"#FF7AB2",
+    "terminal.ansiBrightRed":"#F84547",
+    "terminal.ansiBrightWhite":"#F8F8F8",
+    "terminal.ansiBrightYellow":"#EFA16B",
+    "terminal.ansiCyan":"#64878F",
+    "terminal.ansiGreen":"#95C76F",
+    "terminal.ansiMagenta":"#FF7AB2",
+    "terminal.ansiRed":"#F84547",
+    "terminal.ansiWhite":"#D8D8D8",
+    "terminal.ansiYellow":"#EFA16B"
   }
 }
