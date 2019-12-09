@@ -41,11 +41,10 @@
     "**/bower_components": true
   },
   "editor.parameterHints.enabled": false,
-  "markdown.preview.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "markdown.preview.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
   "workbench.startupEditor": "newUntitledFile",
-  "terminal.integrated.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
-  "terminal.integrated.lineHeight": 1.6,
+  "terminal.integrated.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "files.trimTrailingWhitespace": true,
   "editor.cursorSmoothCaretAnimation": true,
   "files.defaultLanguage": "markdown",
@@ -57,8 +56,10 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
-  "debug.console.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
-  "editor.fontFamily": "'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
+  "editor.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
   "diffEditor.ignoreTrimWhitespace": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
@@ -73,7 +74,6 @@
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
   // Dan Abramov settings
-  "terminal.integrated.fo15": 12,
   "editor.folding": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.matchBrackets": false,
@@ -104,7 +104,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "workbench.colorTheme": "Xcode Default (Dark)",
+  "workbench.colorTheme": "White Night",
   "files.encoding": "utf8",
   "files.insertFinalNewline": false,
   "files.hotExit": "off",
@@ -113,10 +113,6 @@
   "editor.minimap.showSlider": "always",
   "editor.smoothScrolling": true,
   "workbench.fontAliasing": "antialiased",
-  "editor.fontWeight": "500",
-  "editor.fontSize": 12,
-  "editor.lineHeight": 20,
-  "editor.letterSpacing": -0.6,
   "editor.links": false,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -129,26 +125,6 @@
   },
   "sync.autoUpload": false,
   "sync.autoDownload": false,
-  "workbench.colorCustomizations": {
-    "terminal.background":"#292C36",
-    "terminal.foreground":"#D8D8D8",
-    "terminalCursor.background":"#D8D8D8",
-    "terminalCursor.foreground":"#D8D8D8",
-    "terminal.ansiBlack":"#292C36",
-    "terminal.ansiBlue":"#8485CE",
-    "terminal.ansiBrightBlack":"#65568A",
-    "terminal.ansiBrightBlue":"#8485CE",
-    "terminal.ansiBrightCyan":"#64878F",
-    "terminal.ansiBrightGreen":"#95C76F",
-    "terminal.ansiBrightMagenta":"#FF7AB2",
-    "terminal.ansiBrightRed":"#F84547",
-    "terminal.ansiBrightWhite":"#F8F8F8",
-    "terminal.ansiBrightYellow":"#EFA16B",
-    "terminal.ansiCyan":"#64878F",
-    "terminal.ansiGreen":"#95C76F",
-    "terminal.ansiMagenta":"#FF7AB2",
-    "terminal.ansiRed":"#F84547",
-    "terminal.ansiWhite":"#D8D8D8",
-    "terminal.ansiYellow":"#EFA16B"
-  }
+  "editor.renderWhitespace": "all",
+  "todo.statistics.project.text": "([pending]) [est] ([percentage]%)"
 }

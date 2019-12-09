@@ -6,7 +6,7 @@
   > .action-label.icon.explorer-action {
   display: none !important;
 }
-.editor-actions > .monaco-toolbar > .monaco-action-bar {
+.monaco-toolbar > .monaco-action-bar {
   display: none !important;
 }
 
