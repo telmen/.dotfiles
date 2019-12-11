@@ -1,6 +1,7 @@
 {
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
+  "editor.cursorStyle": "block",
   "editor.gotoLocation.multiple": "goto",
   "editor.autoIndent": false,
   "workbench.editor.enablePreview": false,
@@ -41,10 +42,11 @@
     "**/bower_components": true
   },
   "editor.parameterHints.enabled": false,
-  "markdown.preview.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "markdown.preview.fontFamily": "Iosevka,'SF Mono', Consolas",
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
   "workbench.startupEditor": "newUntitledFile",
-  "terminal.integrated.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "terminal.integrated.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "terminal.integrated.lineHeight": 1.5,
   "files.trimTrailingWhitespace": true,
   "editor.cursorSmoothCaretAnimation": true,
   "files.defaultLanguage": "markdown",
@@ -56,10 +58,11 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
-  "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
-  "editor.fontSize": 14,
-  "terminal.integrated.fontSize": 14,
-  "editor.fontFamily": "Iosevka,'SF Mono', Consolas, Liberation Mono, Menlo,monospace",
+  "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "editor.lineHeight": 20,
+  "editor.fontSize": 12,
+  "terminal.integrated.fontSize": 12,
+  "editor.fontFamily": "Iosevka,'SF Mono', Consolas",
   "diffEditor.ignoreTrimWhitespace": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
@@ -104,7 +107,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "workbench.colorTheme": "White Night",
+  "workbench.colorTheme": "GitHub Plus",
   "files.encoding": "utf8",
   "files.insertFinalNewline": false,
   "files.hotExit": "off",
@@ -126,5 +129,44 @@
   "sync.autoUpload": false,
   "sync.autoDownload": false,
   "editor.renderWhitespace": "all",
-  "todo.statistics.project.text": "([pending]) [est] ([percentage]%)"
+  "todo.statistics.project.text": "([pending]) [est] ([percentage]%)",
+  "workbench.colorCustomizations": {
+    "[White Night]": {
+      "editor.background": "#282a36",
+      "panel.background": "#282a36",
+      "sideBar.background": "#282a36",
+      "menu.background": "#282a36",
+      "badge.background": "#282a36",
+      "statusBar.background": "#282a36",
+      "tab.activeBackground": "#282a36",
+      "input.background": "#282a36",
+      "button.background": "#282a36",
+      "editor.selectionBackground": "#4c315080",
+      "editor.selectionForeground": "#ffffff",
+      "sideBarSectionHeader.background": "#282a36",
+      "dropdown.background": "#282a36",
+      "quickInput.background": "#282a36",
+      "statusBar.foreground": "#f8f8f2",
+      "editor.foreground": "#f8f8f2",
+      "foreground": "#f8f8f2",
+      "sideBar.foreground": "#f8f8f2",
+      "menu.foreground": "#f8f8f2",
+      "tab.activeForeground": "#f8f8f2",
+      "editorLineNumber.foreground": "#f8f8f2"
+    }
+  },
+  "editor.lineNumbers": "off",
+  "editor.tokenColorCustomizations": {
+    "[White Night]": {
+      "comments": "#bfc6d8",
+      "keywords": "#ff79c6",
+      "functions": "#FF8000",
+      "numbers": "#bd93f9",
+      "strings": "#747683",
+      "types": "#F8F8F2",
+      "variables": "#8BE9FD"
+    }
+  },
+  "workbench.sideBar.location": "right",
+  "java.errors.incompleteClasspath.severity": "ignore"
 }
