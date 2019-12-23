@@ -1,9 +1,9 @@
-if test -e .exports
-  . .exports
+if test -e (dirname (status -f))/.exports
+  . (dirname (status -f))/.exports
 end
-if test -e .aliases
-  . .aliases
+if test -e (dirname (status -f))/.aliases
+  . (dirname (status -f))/.aliases
 end
-if test -e .fns
-  . .fns
+if test -e (dirname (status -f))/.fns
+  . (dirname (status -f))/.fns
 end
