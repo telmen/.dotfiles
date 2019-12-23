@@ -1,0 +1,25 @@
+function touchp
+	mkdir -p "(dirname "$1")/" && touch "$1"
+end
+
+function zippy
+	zip -r $argv[1].zip $argv[1]
+end
+
+function size
+  du -sh $argv[1]
+end
+
+function perms
+  stat -f '%A %a %N' $argv
+end
+
+function mkcd
+  if [ ! -n "$argv" ]
+    echo "Enter a directory name"
+  else if [ -d $argv ]; then
+    echo "\`$last' already exists"
+  else
+    mkdir $argv && cd $argv
+  end
+end

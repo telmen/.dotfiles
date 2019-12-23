@@ -1,2 +1,5 @@
 .DS_Store
 node_modules/
+fish/functions
+fish/conf.d
+fish/completions

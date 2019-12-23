@@ -1,0 +1,15 @@
+fastlane
+fing
+font-hack-nerd-font
+kap
+qlcolorcode
+qlimagesize
+qlmarkdown
+qlstephen
+qlvideo
+quicklook-json
+quicklookase
+react-native-debugger
+reactotron
+suspicious-package
+webpquicklook

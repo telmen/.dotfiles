@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 brew update
 brew upgrade
@@ -215,8 +215,7 @@ brew install \
     xz \
     yarn \
     zopfli \
-    zsh \
-    zsh-completions
+    fish
 
 # brew casks
 
