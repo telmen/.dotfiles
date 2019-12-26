@@ -60,7 +60,7 @@
   "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas",
   "editor.fontSize": 14,
   "editor.lineHeight": 23,
-  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.fontSize": 14,
   "editor.fontFamily": "Iosevka,'SF Mono', Consolas",
   "diffEditor.ignoreTrimWhitespace": false,
   "emmet.includeLanguages": {
@@ -174,9 +174,10 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // "editor.formatOnSave": true,
+  "editor.formatOnSave": true,
   "python.jediEnabled": false,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "debug.console.fontSize": 14,
 }
