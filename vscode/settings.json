@@ -2,7 +2,6 @@
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.cursorStyle": "block",
-  "editor.gotoLocation.multiple": "goto",
   "editor.autoIndent": false,
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -59,7 +58,6 @@
   "editor.tabSize": 2,
   "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas",
   "editor.fontSize": 14,
-  "editor.lineHeight": 23,
   "terminal.integrated.fontSize": 14,
   "editor.fontFamily": "Iosevka,'SF Mono', Consolas",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -106,7 +104,6 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
-  "workbench.colorTheme": "Slime",
   "files.encoding": "utf8",
   "files.insertFinalNewline": false,
   "files.hotExit": "off",
@@ -129,55 +126,15 @@
   "sync.autoDownload": false,
   "editor.renderWhitespace": "all",
   "todo.statistics.project.text": "([pending]) [est] ([percentage]%)",
-  "workbench.colorCustomizations": {
-    "[White Night]": {
-      "editor.background": "#282a36",
-      "panel.background": "#282a36",
-      "sideBar.background": "#282a36",
-      "menu.background": "#282a36",
-      "badge.background": "#282a36",
-      "statusBar.background": "#282a36",
-      "tab.activeBackground": "#282a36",
-      "input.background": "#282a36",
-      "button.background": "#282a36",
-      "editor.selectionBackground": "#4c315080",
-      "editor.selectionForeground": "#ffffff",
-      "sideBarSectionHeader.background": "#282a36",
-      "dropdown.background": "#282a36",
-      "quickInput.background": "#282a36",
-      "statusBar.foreground": "#f8f8f2",
-      "editor.foreground": "#f8f8f2",
-      "foreground": "#f8f8f2",
-      "sideBar.foreground": "#f8f8f2",
-      "menu.foreground": "#f8f8f2",
-      "tab.activeForeground": "#f8f8f2",
-      "editorLineNumber.foreground": "#f8f8f2"
-    }
-  },
-  "editor.tokenColorCustomizations": {
-    "[White Night]": {
-      "comments": "#bfc6d8",
-      "keywords": "#ff79c6",
-      "functions": "#FF8000",
-      "numbers": "#bd93f9",
-      "strings": "#747683",
-      "types": "#F8F8F2",
-      "variables": "#8BE9FD"
-    }
-  },
   "workbench.sideBar.location": "right",
   "java.errors.incompleteClasspath.severity": "ignore",
-  "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": [
-    "--max-line-length=200"
-  ],
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "python.jediEnabled": false,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "debug.console.fontSize": 14,
+  "workbench.colorTheme": "BirdsofParadise",
 }
