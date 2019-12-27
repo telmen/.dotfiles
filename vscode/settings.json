@@ -41,10 +41,10 @@
     "**/bower_components": true
   },
   "editor.parameterHints.enabled": false,
-  "markdown.preview.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "markdown.preview.fontFamily": "Source Code Pro,Iosevka,'SF Mono', Consolas",
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
   "workbench.startupEditor": "newUntitledFile",
-  "terminal.integrated.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "terminal.integrated.fontFamily": "Source Code Pro,Iosevka,'SF Mono', Consolas",
   "files.trimTrailingWhitespace": true,
   "editor.cursorSmoothCaretAnimation": true,
   "files.defaultLanguage": "markdown",
@@ -56,10 +56,10 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "editor.tabSize": 2,
-  "debug.console.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "debug.console.fontFamily": "Source Code Pro,Iosevka,'SF Mono', Consolas",
   "editor.fontSize": 14,
   "terminal.integrated.fontSize": 14,
-  "editor.fontFamily": "Iosevka,'SF Mono', Consolas",
+  "editor.fontFamily": "Source Code Pro,Iosevka,'SF Mono', Consolas",
   "diffEditor.ignoreTrimWhitespace": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
