@@ -4,6 +4,7 @@ set ruler
 set ai
 set tabstop=2
 set hlsearch
+set ic
 syntax enable
 
 function! s:swap_lines(n1, n2)

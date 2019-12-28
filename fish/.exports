@@ -1,3 +1,4 @@
+export CUSTOM_BIN=$HOME/bin
 export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin
 export MANPATH="/usr/local/man:$MANPATH"
 export MANPAGER='less -X'
@@ -14,7 +15,7 @@ export PYTHON_HOME=$HOME/Library/Python/3.7/bin
 export ANDROID_BIN=$ANDROID_HOME/tools/bin/
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export APPS=(yarn global bin):$OpenCV_ANDROID_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+export APPS=$CUSTOM_BIN:$OpenCV_ANDROID_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 export YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export OPEN_SSL="/usr/local/opt/openssl/bin:$PATH"
 export RUBY="/usr/local/opt/ruby/bin"

@@ -46,16 +46,18 @@ function fonts() {
   echo "fonts: done"
 }
 
+echo "============================"
+echo "Initiating sync files script"
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "====================="
   echo "sync: executing scripts"
   echo "====================="
-  # dotfiles;
+  dotfiles;
   fishshell;
-  # vscode;
-  # fonts;
+  vscode;
+  fonts;
   echo "====================="
   echo "sync: done"
   echo "====================="
