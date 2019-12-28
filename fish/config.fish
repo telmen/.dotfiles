@@ -7,3 +7,6 @@ end
 if test -e (dirname (status -f))/.fns
   . (dirname (status -f))/.fns
 end
+
+# kitty completion
+kitty + complete setup fish | source

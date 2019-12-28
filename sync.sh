@@ -21,13 +21,15 @@ function dotfiles() {
 
 function vscode() {
   echo "vscode: copying settings"
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    [ -f $HOME/vscode/custom.css ] && ln -s $HOME/vscode/custom.css ~/Library/Application\ Support/Code/User/custom.css
-    [ -f $HOME/vscode/keybindings.json ] && ln -s $HOME/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-    [ -f $HOME/vscode/settings.json ] && ln -s $HOME/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-    [ -d $HOME/vscode/snippets ] && ln -s $HOME/vscode/snippets ~/Library/Application\ Support/Code/User/snippets
-    [ -f $HOME/vscode/syncLocalSettings.json ] && ln -s $HOME/vscode/syncLocalSettings.json ~/Library/Application\ Support/Code/User/syncLocalSettings.json
+  VSCODE_USER_PATH=~/Library/Application\ Support/Code/User
+  if [[ "$OSTYPE" == "linux"* ]]; then
+    VSCODE_USER_PATH=~/.config/Code/User
   fi
+  [ -f $(pwd -P)/vscode/custom.css ] && ln -s $(pwd -P)/vscode/custom.css $VSCODE_USER_PATH/custom.css
+  [ -f $(pwd -P)/vscode/keybindings.json ] && ln -s $(pwd -P)/vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
+  [ -f $(pwd -P)/vscode/settings.json ] && ln -s $(pwd -P)/vscode/settings.json $VSCODE_USER_PATH/settings.json
+  [ -d $(pwd -P)/vscode/snippets ] && ln -s $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets
+  [ -f $(pwd -P)/vscode/syncLocalSettings.json ] && ln -s $(pwd -P)/vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
   echo "vscode: done"
 }
 

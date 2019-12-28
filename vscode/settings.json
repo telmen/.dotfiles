@@ -122,8 +122,8 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "sync.autoUpload": false,
-  "sync.autoDownload": false,
+  "sync.autoUpload": true,
+  "sync.autoDownload": true,
   "editor.renderWhitespace": "all",
   "todo.statistics.project.text": "([pending]) [est] ([percentage]%)",
   "workbench.sideBar.location": "right",
