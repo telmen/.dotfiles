@@ -25,11 +25,12 @@
     ],
     "openTokenLink": true,
     "disableUpdateMessage": false,
-    "lastUpload": "2019-11-06T13:27:09.483Z",
-    "lastDownload": "2019-11-06T13:27:09.483Z",
+    "lastUpload": "2019-12-30T07:15:35.174Z",
+    "lastDownload": "2019-12-30T07:15:35.174Z",
     "githubEnterpriseUrl": null,
     "askGistDescription": true,
     "customFiles": {},
     "hostName": null,
-    "universalKeybindings": false
+    "universalKeybindings": false,
+    "autoUploadDelay": 20
 }

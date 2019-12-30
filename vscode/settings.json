@@ -2,38 +2,12 @@
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.cursorStyle": "block",
-  "editor.autoIndent": false,
+  "editor.autoIndent": "full",
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.openPositioning": "first",
   "editor.renderControlCharacters": true,
   "terminal.integrated.rendererType": "dom",
-  "highlight.regexes": {
-    "(//?TODO:?)(.*)": [
-      {
-        "overviewRulerColor": "#FFBD2A",
-        "backgroundColor": "#FFBD2A",
-        "color": "#fff",
-      },
-    ],
-    "(//?FIXME:?)(.*)": [
-      {
-        "overviewRulerColor": "#F26092",
-        "backgroundColor": "#F26092",
-        "color": "#fff",
-      },
-      {
-        "backgroundColor": "#F26092",
-        "color": "#fff"
-      }
-    ],
-    "(// )(@\\w+)": [
-      {},
-      {
-        "color": "#4de0ff"
-      }
-    ]
-  },
   "workbench.editor.highlightModifiedTabs": true,
   "window.title": "${activeFolderLong}${separator}${rootName}",
   "search.exclude": {
@@ -73,7 +47,6 @@
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
-  // Dan Abramov settings
   "editor.folding": false,
   "editor.hideCursorInOverviewRuler": true,
   "editor.matchBrackets": false,
@@ -125,9 +98,7 @@
   "sync.autoUpload": true,
   "sync.autoDownload": true,
   "editor.renderWhitespace": "all",
-  "todo.statistics.project.text": "([pending]) [est] ([percentage]%)",
   "workbench.sideBar.location": "right",
-  "java.errors.incompleteClasspath.severity": "ignore",
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -136,5 +107,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "debug.console.fontSize": 14,
-  "workbench.colorTheme": "BirdsofParadise",
+  "workbench.colorTheme": "Base16 Leaf Tomorrow",
+  "extensions.ignoreRecommendations": true
 }
