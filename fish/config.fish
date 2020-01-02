@@ -9,6 +9,6 @@ if test -e (dirname (status -f))/.fns
 end
 
 # kitty completion
-if command -v kitty
+if command -v kitty> /dev/null 2>&1
   kitty + complete setup fish | source
 end
