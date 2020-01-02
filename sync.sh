@@ -6,16 +6,18 @@ function fishshell() {
     echo "fish shell: a directory already exists. Creating backup folder of current configuration."
     cp -rf ~/.config/fish ~/fish.backup
     rm -rf ~/.config/fish
-    ln -s "$(pwd -P)/fish" ~/.config/fish
+    ln -sfvn "$(pwd -P)/fish" ~/.config/fish
   else
-    ln -s "$(pwd -P)/fish" ~/.config/fish
+    ln -sfvn "$(pwd -P)/fish" ~/.config/fish
   fi
   echo "fish shell: done"
 }
 
 function dotfiles() {
   echo "dotfiles: creating symbolic links"
-  find . -type f -name ".*" -execdir ln -s "$(cd "$(dirname {})" && pwd -P)/$(basename {})" ~ ';'
+  find . -type f -name '.*' -printf '%f\n' | while read f; do
+    ln -sfvn "$(pwd -P)/$f" ~
+  done
   echo "dotfiles: done"
 }
 
@@ -25,11 +27,11 @@ function vscode() {
   if [[ "$OSTYPE" == "linux"* ]]; then
     VSCODE_USER_PATH=~/.config/Code/User
   fi
-  [ -f $(pwd -P)/vscode/custom.css ] && ln -s $(pwd -P)/vscode/custom.css $VSCODE_USER_PATH/custom.css
-  [ -f $(pwd -P)/vscode/keybindings.json ] && ln -s $(pwd -P)/vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
-  [ -f $(pwd -P)/vscode/settings.json ] && ln -s $(pwd -P)/vscode/settings.json $VSCODE_USER_PATH/settings.json
-  [ -d $(pwd -P)/vscode/snippets ] && ln -s $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets # FIXME: creates infinite symlinks
-  [ -f $(pwd -P)/vscode/syncLocalSettings.json ] && ln -s $(pwd -P)/vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
+  [ -f $(pwd -P)/vscode/custom.css ] && ln -sfvn $(pwd -P)/vscode/custom.css $VSCODE_USER_PATH/custom.css
+  [ -f $(pwd -P)/vscode/keybindings.json ] && ln -sfvn $(pwd -P)/vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
+  [ -f $(pwd -P)/vscode/settings.json ] && ln -sfvn $(pwd -P)/vscode/settings.json $VSCODE_USER_PATH/settings.json
+  [ -d $(pwd -P)/vscode/snippets ] && ln -sfvn $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets 
+  [ -f $(pwd -P)/vscode/syncLocalSettings.json ] && ln -sfvn $(pwd -P)/vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
   echo "vscode: done"
 }
 
