@@ -15,7 +15,7 @@
   "editor.hideCursorInOverviewRuler": true,
   "editor.insertSpaces": true,
   "editor.links": false,
-  "editor.matchBrackets": false,
+  "editor.matchBrackets": "never",
   "editor.minimap.enabled": false,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",

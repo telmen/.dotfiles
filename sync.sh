@@ -28,7 +28,7 @@ function vscode() {
   [ -f $(pwd -P)/vscode/custom.css ] && ln -s $(pwd -P)/vscode/custom.css $VSCODE_USER_PATH/custom.css
   [ -f $(pwd -P)/vscode/keybindings.json ] && ln -s $(pwd -P)/vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
   [ -f $(pwd -P)/vscode/settings.json ] && ln -s $(pwd -P)/vscode/settings.json $VSCODE_USER_PATH/settings.json
-  [ -d $(pwd -P)/vscode/snippets ] && ln -s $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets
+  [ -d $(pwd -P)/vscode/snippets ] && ln -s $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets # FIXME: creates infinite symlinks
   [ -f $(pwd -P)/vscode/syncLocalSettings.json ] && ln -s $(pwd -P)/vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
   echo "vscode: done"
 }
@@ -39,33 +39,34 @@ function fonts() {
     rsync -avh fonts/* ~/Library/Fonts
   else
     if [[ -d ~/.local/share/fonts/ ]]; then
-      rsync -avh  fonts/* ~/.local/share/fonts/
+      rsync -avh fonts/* ~/.local/share/fonts/
     else
       mkdir ~/.local/share/fonts
-      rsync -avh  fonts/* ~/.local/share/fonts/
+      rsync -avh fonts/* ~/.local/share/fonts/
     fi
+    fc-cache -fv
   fi
   echo "fonts: done"
 }
 
 echo "============================"
-echo "Initiating sync files script"
-read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-echo "";
+echo "starting sync script"
+read -p "this may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
+echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "====================="
   echo "sync: executing scripts"
   echo "====================="
-  dotfiles;
-  fishshell;
-  vscode;
-  fonts;
+  dotfiles
+  fishshell
+  vscode
+  fonts
   echo "====================="
   echo "sync: done"
   echo "====================="
-fi;
+fi
 
-unset dotfiles;
-unset vscode;
-unset fonts;
-unset fishshell;
+unset dotfiles
+unset vscode
+unset fonts
+unset fishshell

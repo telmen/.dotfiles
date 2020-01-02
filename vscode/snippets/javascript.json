@@ -29,6 +29,11 @@
 		"body": ["$1 = () => { \n $2 \n}"],
 		"description": "Arrow function snippet"
 	},
+	"Anonymous arrow function": {
+		"prefix": "arr",
+		"body": ["($1) => $2"],
+		"description": "Arrow function snippet"
+	},
 	"Background color CSS-in-JS": {
 		"prefix": "bgc",
 		"body": ["backgroundColor: $1"],
