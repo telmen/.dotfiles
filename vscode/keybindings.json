@@ -40,14 +40,18 @@
 		"key": "ctrl+cmd+down",
 		"command": "editor.emmet.action.decrementNumberByOne"
 	},
-  {
-    "key": "alt+cmd+left",
-    "command": "editor.action.moveCarretLeftAction",
-    "when": "editorHasSelection"
-  },
-  {
-    "key": "alt+cmd+right",
-    "command": "editor.action.moveCarretRightAction",
-    "when": "editorHasSelection"
-  }
+	{
+		"key": "alt+cmd+left",
+		"command": "editor.action.moveCarretLeftAction",
+		"when": "editorHasSelection"
+	},
+	{
+		"key": "alt+cmd+right",
+		"command": "editor.action.moveCarretRightAction",
+		"when": "editorHasSelection"
+	},
+	{
+		"key": "alt+tab",
+		"command": "workbench.action.quickSwitchWindow"
+	}
 ]
