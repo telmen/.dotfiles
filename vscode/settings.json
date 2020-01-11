@@ -1,6 +1,6 @@
 {
   "atomKeymap.promptV3Features": true,
-  "debug.console.fontFamily": "Source Code Pro",
+  "debug.console.fontFamily": "Iosevka",
   "debug.console.fontSize": 14,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoIndent": "full",
@@ -8,7 +8,7 @@
   "editor.cursorStyle": "block",
   "editor.detectIndentation": true,
   "editor.folding": false,
-  "editor.fontFamily": "Source Code Pro",
+  "editor.fontFamily": "Iosevka",
   "editor.fontSize": 14,
   "editor.lineHeight": 23, // 1.6
   "editor.formatOnSave": true,
@@ -48,11 +48,11 @@
   "files.trimTrailingWhitespace": true,
   "html-css-class-completion.enableEmmetSupport": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "markdown.preview.fontFamily": "Source Code Pro",
+  "markdown.preview.fontFamily": "Iosevka",
   "sync.autoDownload": false,
   "sync.autoUpload": false,
   "sync.gist": "9deb7773f42fa947bb50ab41d359bc95",
-  "terminal.integrated.fontFamily": "Source Code Pro",
+  "terminal.integrated.fontFamily": "Iosevka",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.rendererType": "dom",
   "todohighlight.isEnable": false,
@@ -80,5 +80,6 @@
   "vscode_custom_css.statusbar": false,
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
-  ]
+  ],
+  "editor.matchBrackets": false
 }
