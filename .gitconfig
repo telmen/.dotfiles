@@ -1,76 +1,75 @@
 # This is Git's per-user configuration file.
 [alias]
-	logn = log --no-merges
-        forget = checkout .
-        uncommit = reset HEAD~
-	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
-	praise = blame
-	overview = log --all --since='2 weeks' --oneline --no-merges
-	me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
-	clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
-	graph = log --graph --all --decorate --stat --date=iso
-        unstage = reset --
+logn = log --no-merges
+forget = checkout .
+uncommit = reset HEAD~
+fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+praise = blame
+overview = log --all --since='2 weeks' --oneline --no-merges
+me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
+clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
+graph = log --graph --all --decorate --stat --date=iso
+unstage = reset --
 [user]
-	name = telmen
-	email = flyinvoke@gmail.com
-	signingKey = 2D3B964912A6D8DB
+name = telmen
+email = flyinvoke@gmail.com
+signingKey = 2D3B964912A6D8DB
 [core]
-  editor = vim
-  autocrlf = input
-	pager = diff-so-fancy | less --tabs=2 -SRFX
-	trustctime = false
+editor = vim
+autocrlf = input
+pager = diff-so-fancy | less --tabs=2 -SRFX
+trustctime = false
 [color]
-	ui = true
+ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = white bold 124
-	newNormal = green bold
-	newHighlight = white bold 65
+oldNormal = red bold
+oldHighlight = white bold 124
+newNormal = green bold
+newHighlight = white bold 65
 [color "diff"]
-	meta = 214 bold
-	frag = magenta bold
-	commit = 214 bold
-	old = red bold
-	new = green bold
-        whitespace = red reverse
+meta = 214 bold
+frag = magenta bold
+commit = 214 bold
+old = red bold
+new = green bold
+whitespace = red reverse
 [color "commit"]
-        meta = magenta
+meta = magenta
 [diff]
-	tool = meld
+tool = meld
 [difftool]
-        prompt = false
+prompt = false
 [difftool "meld"]
-	trustExitCode = true
-	cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+trustExitCode = true
+cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
 [push]
-        default = tracking
+default = tracking
 [branch]
-        autosetuprebase = always
+autosetuprebase = always
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
 [commit]
-	gpgsign = true
-        template = ~/.gitmessage
-	verbose = true
+gpgsign = true
+verbose = true
 [gpg]
-	program = gpg
+program = gpg
 [rebase]
-        autoStash = true
+autoStash = true
 [merge]
-	ff = no
-	commit = no
-	tool = meld
+ff = no
+commit = no
+tool = meld
 [mergetool]
-        prompt = false
+prompt = false
 [mergetool "meld"]
-        trustExitCode = true
-        cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+trustExitCode = true
+cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [format]
-        pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
 [log]
-        date = auto:human
+date = auto:human
 [changelog]
-	format = * %s by %an
+format = * %s by %an
