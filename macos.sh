@@ -821,13 +821,6 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false
 
 ###############################################################################
-# Spectacle.app                                                               #
-###############################################################################
-
-# Set up my preferred keyboard shortcuts
-cp -r macos/spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json 2>/dev/null
-
-###############################################################################
 # Install apps
 ###############################################################################
 
@@ -881,7 +874,6 @@ for app in "Activity Monitor" \
   "Opera" \
   "Photos" \
   "Safari" \
-  "Spectacle" \
   "SystemUIServer" \
   "iTerm2" \
   "Terminal"; do
