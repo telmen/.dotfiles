@@ -60,7 +60,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   dotfiles
   fishshell
   vscode
-  fonts
   echo "====================="
   echo "sync: done"
   echo "====================="
