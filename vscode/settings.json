@@ -1,4 +1,9 @@
 {
+  "editor.fontSize": 14,
+  "editor.fontWeight": "500",
+  "terminal.integrated.fontSize": 14,
+  "editor.fontFamily": "Source Code Pro",
+  "terminal.integrated.fontFamily": "Source Code Pro",
   "atomKeymap.promptV3Features": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoIndent": "full",
@@ -54,7 +59,6 @@
   "window.zoomLevel": 0,
   "workbench.settings.editor": "json",
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Oceanic Next (Sublime)",
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.highlightModifiedTabs": true,
@@ -72,5 +76,6 @@
   "vscode_custom_css.statusbar": false,
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
-  ]
+  ],
+  "workbench.colorTheme": "Ayu Mirage"
 }
