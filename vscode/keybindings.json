@@ -1,45 +1,45 @@
 // Empty
 [
-	{
-		"key": "shift+cmd+u",
-		"command": "editor.action.transformToUppercase"
-	},
-	{
-		"key": "ctrl+shift+q",
-		"command": "workbench.action.toggleMaximizedPanel"
-	},
-	{
-		"key": "shift+cmd+d",
-		"command": "editor.action.copyLinesDownAction",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
-		"key": "shift+alt+down",
-		"command": "-editor.action.copyLinesDownAction",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
-		"key": "ctrl+w",
-		"command": "expand_region",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "ctrl+shift+w",
-		"command": "undo_expand_region",
-		"when": "editorTextFocus && editorHasSelection"
-	},
-	{
-		"key": "ctrl+cmd+e",
-		"command": "editor.action.changeAll"
-	},
-	{
-		"key": "ctrl+cmd+up",
-		"command": "editor.emmet.action.incrementNumberByOne"
-	},
-	{
-		"key": "ctrl+cmd+down",
-		"command": "editor.emmet.action.decrementNumberByOne"
-	},
+  {
+    "key": "shift+cmd+u",
+    "command": "editor.action.transformToUppercase"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "-editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "expand_region",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "undo_expand_region",
+    "when": "editorTextFocus && editorHasSelection"
+  },
+  {
+    "key": "ctrl+cmd+e",
+    "command": "editor.action.changeAll"
+  },
+  {
+    "key": "ctrl+cmd+up",
+    "command": "editor.emmet.action.incrementNumberByOne"
+  },
+  {
+    "key": "ctrl+cmd+down",
+    "command": "editor.emmet.action.decrementNumberByOne"
+  },
   {
     "key": "alt+cmd+left",
     "command": "editor.action.moveCarretLeftAction",
@@ -49,5 +49,9 @@
     "key": "alt+cmd+right",
     "command": "editor.action.moveCarretRightAction",
     "when": "editorHasSelection"
+  },
+  {
+    "key": "alt+tab",
+    "command": "workbench.action.quickSwitchWindow"
   }
 ]
