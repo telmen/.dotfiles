@@ -74,5 +74,5 @@
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
-  "workbench.colorTheme": "Ayu Mirage"
+  "workbench.colorTheme": "seti-classic-vscode"
 }

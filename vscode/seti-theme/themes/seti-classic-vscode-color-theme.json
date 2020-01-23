@@ -1,0 +1,295 @@
+{
+	"name": "seti-classic-vscode",
+	"type": "dark",
+	"colors": {
+		/*
+		Main Colors:
+		Blue: 	#55b5db
+		Green: 	#9fca56
+		Yellow: #e6cd69
+		Red: 	#cd3f45
+		Purple: #a074c4
+		*/
+		// Editor
+		"editor.background": "#191B1C",
+		"editor.foreground": "#d4d7d6",
+		"editorLineNumber.foreground": "#41535b",
+		"editorLineNumber.activeForeground": "#55b5db",
+		"editor.wordHighlightBackground": "#356577",
+		"editorRuler.foreground": "#1d1f21",
+		"editorError.foreground": "#cd3f45",
+		"editorWarning.foreground": "#e6cd69",
+		"editorInfo.foreground": "#55b5db",
+		"editorHint.foreground": "#a074c4",
+
+		// Gutter
+		"editorGutter.background": "#0F1313",
+		"editorGutter.modifiedBackground": "#55b5db",
+		"editorGutter.addedBackground": "#9fca56",
+		"editorGutter.deletedBackground": "#cd3f45",
+
+		// Activity Bar
+		"activityBar.background": "#1D1F21",
+		"activityBar.foreground": "#d4d7d6",
+		"activityBarBadge.background": "#55b5db",
+
+		// Lists and Trees
+		"list.warningForeground": "#e6cd69",
+		"list.errorForeground": "#cd3f45",
+		"list.invalidItemForeground": "#a074c4",
+		
+		// Menu
+		"menu.background": "#1D1F21",
+		"menu.selectionBackground": "#356577",
+
+		// Titlebar
+		"titleBar.activeBackground": "#1D1F21",
+
+		// SideBar
+		"sideBar.background": "#131415",
+		"sideBarTitle.foreground": "#bbbbbb",
+		"sideBar.border": "#1D1F21",
+		
+		// Status Bar
+		"statusBar.background" : "#1D1F21",
+        "statusBar.noFolderBackground" : "#1D1F21",
+		"statusBar.debuggingBackground": "#2b0000",
+		
+		// Tabs
+		"editorGroup.border": "#111313",
+		"editorGroupHeader.tabsBorder": "#111313",
+		"editorGroupHeader.tabsBackground": "#22272B",
+		"tab.activeBackground": "#111313",
+		"tab.unfocusedActiveBackground": "#111313",
+		"tab.border": "#111313",
+		"tab.activeBorder": "#55b5db",
+		"tab.unfocusedActiveBorder": "#55b5db",
+		"tab.inactiveBackground": "#1C2123",
+		"tab.inactiveForeground": "#d4d7d6",
+
+		// Git
+		"gitDecoration.addedResourceForeground": "#9fca56",
+		"gitDecoration.modifiedResourceForeground": "#55b5db",
+		"gitDecoration.deletedResourceForeground": "#cd3f45",
+		"gitDecoration.untrackedResourceForeground": "#a074c4",
+		"gitDecoration.ignoredResourceForeground": "#41535b",
+		"gitDecoration.conflictingResourceForeground": "#e6cd69",
+		"gitDecoration.submoduleResourceForeground": "#356577",
+
+		// Overview Ruler
+		"editorOverviewRuler.bracketMatchForeground": "#d4d7d6",
+		"editorOverviewRuler.modifiedForeground": "#55b5db",
+		"editorOverviewRuler.addedForeground": "#9fca56",
+		"editorOverviewRuler.deletedForeground": "#cd3f45",
+		"editorOverviewRuler.errorForeground": "#cd3f45",
+		"editorOverviewRuler.warningForeground": "#e6cd69",
+		"editorOverviewRuler.infoForeground": "#55b5db",
+		"editorOverviewRuler.findMatchForeground": "#d4d7d6",
+		
+		// Terminal Colors
+		// From base16-seti-ui.minttyrc
+		"terminal.background": "#151718",
+		"terminal.foreground": "#d4d7d6",
+		"terminal.ansiBlack": "#151718",
+		"terminal.ansiBrightBlack": "#41535b",
+		"terminal.ansiBlue": "#55b5db",
+		"terminal.ansiBrightBlue": "#43a5d5",
+		"terminal.ansiCyan": "#55dbbe",
+		"terminal.ansiBrightCyan": "#8a553f",
+		"terminal.ansiGreen": "#9fca56",
+		"terminal.ansiBrightGreen": "#8ec43d",
+		"terminal.ansiYellow": "#e6cd69",
+		"terminal.ansiBrightYellow": "#3b758c",
+		"terminal.ansiMagenta": "#a074c4",
+		"terminal.ansiBrightMagenta": "#eeeeee",
+		"terminal.ansiWhite": "#d6d6d6",
+		"terminal.ansiBrightWhite": "#ffffff",
+		"terminal.ansiRed": "#cd3f45",
+		"terminal.ansiBrightRed": "#db7b55",
+
+
+	},
+	"tokenColors": [
+		{
+			"name": "Comment",
+			"scope": [
+				"comment",
+				"punctuation.definition.comment",
+				"markup.quote",
+				"markup.heading.setext",
+				"meta.separator"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#41535b"
+			}
+		},
+		{
+			"name": "Blue",
+			"scope": [
+				"entity.name.function",
+				"entity.name.tag.html",
+				"support.function",
+				"meta.function-call",
+				"punctuation.definition.array.begin.json",
+				"punctuation.definition.array.end.json",
+				"string.quoted.docstring.single",
+				"string.quoted.docstring.multi",
+				"string.quoted.single",
+				"string.quoted.double",
+				"support.type.property-name",
+				"variable.parameter.function-call",
+				"meta.brace.square",
+				"entity.name.tag.js.jsx",
+				"punctuation.definition.tag.begin.js.jsx",
+				"punctuation.definition.tag.end.js.jsx",
+				"entity.name.tag.localname.xml",
+				"punctuation.definition.tag.xml",
+				"punctuation.definition.tag.begin.html",
+				"punctuation.definition.tag.end.html",
+				"heading",
+				"punctuation.definition.metadata",
+				"punctuation.definition.string"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#55b5db"
+			}
+        },
+        {
+			"name": "Green",
+			"scope": [
+				"variable.other.object.property",
+				"entity.name.tag",
+				"entity.other.attribute-name.class",
+				"entity.other.attribute-name.id",
+				"entity.other.attribute-name.pseudo-class",
+				"entity.other.inherited-class",
+				"keyword.control.at-rule.import",
+				"keyword.control.at-rule.media",
+				"keyword.operator.gradient.css",
+				"keyword.operator.logical.and.media",
+				"entity.other.attribute-name.html",
+				"keyword.other.important",
+				"keyword.other.unit.px",
+				"keyword.operator.new",
+				"variable.other.property",
+				"entity.other.attribute-name.js.jsx",
+				"entity.other.attribute-name.localname.xml",
+				"entity.other.attribute-name.xml",
+				"markup.list.unnumbered",
+				"markup.list.numbered",
+				"variable.language.special.self"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#9fca56"
+			}
+        },
+        {
+			"name": "Yellow",
+			"scope": [
+				"keyword.control",
+				"keyword.operator",
+				"storage.type.class",
+				"storage.type.function",
+				"storage.type",
+				"punctuation.separator.key-value.html",
+				"keyword.codetag.notation",
+				"meta.tag.xml",
+				"meta.tag.preprocessor.xml",
+				"markup.underline.link",
+				"punctuation.definition.list",
+				"punctuation.separator.array.json.comments",
+				"punctuation.separator.dictionary.key-value.json.comments"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#e6cd69"
+			}
+        },
+        {
+			"name": "Red",
+			"scope": [
+				"constant.character.escape",
+				"constant.language",
+				"constant.numeric",
+				"support.constant.font-name",
+				"support.constant.media",
+				"support.constant.property-value.css"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#cd3f45"
+			}
+        },
+        {
+			"name": "Purple",
+			"scope": [
+				"entity.name.type.class",
+				"support.type.property-name.css",
+				"support.type.property-name.media",
+				"variable.other.object",
+				"punctuation.section.embedded.begin.js.jsx",
+				"punctuation.section.embedded.end.js.jsx",
+				"entity.name.tag.xml",
+				"markup.inline.raw.string",
+				"string.other.link.title"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#a074c4"
+			}
+        },
+        {
+			"name": "Font Color",
+			"scope": [
+				"variable.language",
+				"meta.function-call.arguments",
+				"punctuation.definition.arguments.begin",
+				"punctuation.definition.arguments.end",
+				"string.quoted.double.json",
+				"string.quoted.double.html",
+				"punctuation.accessor.js.jsx",
+				"string.quoted.double.xml",
+				"punctuation.definition.string.begin.json.comments",
+				"punctuation.definition.string.end.json.comments"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#d4d7d6"
+			}
+		},
+		{
+			"name": "Darkened Font Color",
+			"scope": [
+				"punctuation.definition.entity",
+				"punctuation.terminator.rule"
+			],
+			"settings": {
+				"fontStyle": "",
+				"foreground": "#888B8A"
+			}
+		},
+		{
+			"name": "Bold Font Color",
+			"scope": [
+				"markup.bold"
+			],
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#d4d7d6"
+			}
+		},
+		{
+			"name": "Italic Font Color",
+			"scope": [
+				"markup.italic"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#d4d7d6"
+			}
+		}
+	]
+}

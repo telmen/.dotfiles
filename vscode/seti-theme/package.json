@@ -1,0 +1,21 @@
+{
+    "name": "seti-classic-vscode",
+    "displayName": "seti-classic-vscode",
+    "description": "VSCode port of Atom seti-classic theme",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.35.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "seti-classic-vscode",
+                "uiTheme": "vs-dark",
+                "path": "./themes/seti-classic-vscode-color-theme.json"
+            }
+        ]
+    }
+}

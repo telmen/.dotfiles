@@ -6,32 +6,37 @@ function fishshell() {
     echo "fish shell: a directory already exists. Creating backup folder of current configuration."
     cp -rf ~/.config/fish ~/fish.backup
     rm -rf ~/.config/fish
-    ln -sfvn "$(pwd -P)/fish" ~/.config/fish
-  else
-    ln -sfvn "$(pwd -P)/fish" ~/.config/fish
   fi
+  ln -sfvnr fish ~/.config/fish
   echo "fish shell: done"
 }
 
 function dotfiles() {
   echo "dotfiles: creating symbolic links"
   find . -type f -name '.*' -printf '%f\n' | while read f; do
-    ln -sfvn "$(pwd -P)/$f" ~
+    ln -sfvnr $f ~
   done
   echo "dotfiles: done"
 }
 
 function vscode() {
   echo "vscode: copying settings"
-  VSCODE_USER_PATH=~/Library/Application\ Support/Code/User
+  local VSCODE_USER_PATH=~/Library/Application\ Support/Code/User
+  local VSCODE_EXTENSION_PATH=~/.vscode/extensions/
   if [[ "$OSTYPE" == "linux"* ]]; then
     VSCODE_USER_PATH=~/.config/Code/User
   fi
-  [ -f $(pwd -P)/vscode/custom.css ] && ln -sfvn $(pwd -P)/vscode/custom.css $VSCODE_USER_PATH/custom.css
-  [ -f $(pwd -P)/vscode/keybindings.json ] && ln -sfvn $(pwd -P)/vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
-  [ -f $(pwd -P)/vscode/settings.json ] && ln -sfvn $(pwd -P)/vscode/settings.json $VSCODE_USER_PATH/settings.json
-  [ -d $(pwd -P)/vscode/snippets ] && ln -sfvn $(pwd -P)/vscode/snippets $VSCODE_USER_PATH/snippets 
-  [ -f $(pwd -P)/vscode/syncLocalSettings.json ] && ln -sfvn $(pwd -P)/vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
+  if [[ -d $VSCODE_USER_PATH ]]; then
+    [ -f vscode/custom.css &&  ] && ln -sfvnr vscode/custom.css $VSCODE_USER_PATH/custom.css
+    [ -f vscode/keybindings.json ] && ln -sfvnr vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
+    [ -f vscode/settings.json ] && ln -sfvnr vscode/settings.json $VSCODE_USER_PATH/settings.json
+    [ -d vscode/snippets ] && rm -rf $VSCODE_USER_PATH/snippets && ln -sfvnr vscode/snippets $VSCODE_USER_PATH/snippets
+    [ -f vscode/syncLocalSettings.json ] && rsync -avh vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
+    [ -d vscode/seti-theme ] && rsync -avh vscode/seti-theme $VSCODE_EXTENSION_PATH/seti-theme
+  else
+    echo "vscode not installed, skips vscode config syncing"
+  fi
+
   echo "vscode: done"
 }
 
