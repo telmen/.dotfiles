@@ -215,7 +215,8 @@ brew install \
   xz \
   yarn \
   zopfli \
-  fish
+  fish \
+  exa
 
 # brew casks
 

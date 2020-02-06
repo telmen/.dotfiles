@@ -159,3 +159,6 @@ alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e $PATH//:/\\n'
+
+alias ll="exa --group-directories-first -Bhl"
+alias ls="exa"
