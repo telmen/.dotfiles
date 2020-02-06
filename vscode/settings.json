@@ -64,7 +64,6 @@
   "workbench.editor.showTabs": false,
   "workbench.editor.tabCloseButton": "left",
   "workbench.fontAliasing": "antialiased",
-  "workbench.iconTheme": null,
   "workbench.list.keyboardNavigation": "simple",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
@@ -74,5 +73,6 @@
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
-  "workbench.colorTheme": "seti-classic-vscode"
+  "workbench.colorTheme": "seti-classic-vscode",
+  "workbench.iconTheme": null
 }

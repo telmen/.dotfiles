@@ -21,6 +21,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux"* ]]; then
   . $(pwd -P)/ubuntu.sh
 fi
+. $(pwd -P)/common.sh
 . $(pwd -P)/sync.sh
 
 # install n - node version manager
