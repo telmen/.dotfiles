@@ -27,12 +27,12 @@ function vscode() {
     VSCODE_USER_PATH=~/.config/Code/User
   fi
   if [[ -d $VSCODE_USER_PATH ]]; then
-    [ -f vscode/custom.css &&  ] && ln -sfvnr vscode/custom.css $VSCODE_USER_PATH/custom.css
+    [ -f vscode/custom.css && ] && ln -sfvnr vscode/custom.css $VSCODE_USER_PATH/custom.css
     [ -f vscode/keybindings.json ] && ln -sfvnr vscode/keybindings.json $VSCODE_USER_PATH/keybindings.json
     [ -f vscode/settings.json ] && ln -sfvnr vscode/settings.json $VSCODE_USER_PATH/settings.json
     [ -d vscode/snippets ] && rm -rf $VSCODE_USER_PATH/snippets && ln -sfvnr vscode/snippets $VSCODE_USER_PATH/snippets
     [ -f vscode/syncLocalSettings.json ] && rsync -avh vscode/syncLocalSettings.json $VSCODE_USER_PATH/syncLocalSettings.json
-    [ -d vscode/seti-theme ] && rsync -avh vscode/seti-theme $VSCODE_EXTENSION_PATH/seti-theme
+    [ -d vscode/seti-theme ] && rsync -avh vscode/seti-theme/* $VSCODE_EXTENSION_PATH/seti-theme
   else
     echo "vscode not installed, skips vscode config syncing"
   fi
