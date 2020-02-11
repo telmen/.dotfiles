@@ -5,23 +5,16 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.autoIndent": "full",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.cursorStyle": "block",
   "editor.detectIndentation": true,
   "editor.folding": false,
   "editor.formatOnSave": true,
   "editor.hideCursorInOverviewRuler": true,
   "editor.insertSpaces": true,
   "editor.links": false,
-  "editor.minimap.enabled": false,
-  "editor.minimap.renderCharacters": false,
-  "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.occurrencesHighlight": false,
-  "editor.overviewRulerBorder": false,
   "editor.parameterHints.enabled": false,
   "editor.renderControlCharacters": true,
-  "editor.renderIndentGuides": false,
-  "editor.renderLineHighlight": "none",
   "editor.renderWhitespace": "selection",
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
@@ -51,28 +44,95 @@
   "terminal.integrated.rendererType": "dom",
   "todohighlight.isEnable": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "window.nativeTabs": true,
   "window.title": "${activeFolderLong}${separator}${rootName}",
   "window.zoomLevel": 0,
   "workbench.settings.editor": "json",
-  "workbench.activityBar.visible": false,
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.openPositioning": "first",
-  "workbench.editor.showIcons": false,
   "workbench.editor.showTabs": false,
-  "workbench.editor.tabCloseButton": "left",
   "workbench.fontAliasing": "antialiased",
   "workbench.list.keyboardNavigation": "simple",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "vscode_custom_css.policy": true,
   "vscode_custom_css.statusbar": false,
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
-  "workbench.colorTheme": "seti-classic-vscode",
-  "workbench.iconTheme": null
+  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.iconTheme": null,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.cursorStyle": "line-thin",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  "editor.fontWeight": "500",
+  "editor.lineHeight": 17,
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.lineHeight": 1.23,
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.overviewRulerBorder": false,
+  "editor.renderIndentGuides": false,
+  "editor.renderLineHighlight": "all",
+  "workbench.activityBar.visible": false,
+  "workbench.editor.tabCloseButton": "left",
+  "workbench.editor.showIcons": false,
+  "window.nativeTabs": true,
+  "editor.tokenColorCustomizations": {
+    "[Xcode Partial (Light)]": {
+      "textMateRules": [
+        {
+          "scope": "comment",
+          "settings": {
+            "foreground": "#536579",
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    },
+    "[Xcode Partial (Dark)]": {
+      "textMateRules": [
+        {
+          "scope": "source",
+          "settings": {
+            "foreground": "#D4D4D4"
+          }
+        },
+        {
+          "scope": "comment",
+          "settings": {
+            "foreground": "#6C7986",
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
+  },
+  "workbench.colorCustomizations": {
+    "terminal.background": "#262626",
+    "terminal.foreground": "#DAB997",
+    "terminalCursor.background": "#DAB997",
+    "terminalCursor.foreground": "#DAB997",
+    "terminal.ansiBlack": "#262626",
+    "terminal.ansiBlue": "#83ADAD",
+    "terminal.ansiBrightBlack": "#8A8A8A",
+    "terminal.ansiBrightBlue": "#83ADAD",
+    "terminal.ansiBrightCyan": "#85AD85",
+    "terminal.ansiBrightGreen": "#AFAF00",
+    "terminal.ansiBrightMagenta": "#D485AD",
+    "terminal.ansiBrightRed": "#D75F5F",
+    "terminal.ansiBrightWhite": "#EBDBB2",
+    "terminal.ansiBrightYellow": "#FFAF00",
+    "terminal.ansiCyan": "#85AD85",
+    "terminal.ansiGreen": "#AFAF00",
+    "terminal.ansiMagenta": "#D485AD",
+    "terminal.ansiRed": "#D75F5F",
+    "terminal.ansiWhite": "#DAB997",
+    "terminal.ansiYellow": "#FFAF00"
+  }
 }
