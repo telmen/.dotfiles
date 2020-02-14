@@ -216,7 +216,8 @@ brew install \
   yarn \
   zopfli \
   fish \
-  exa
+  exa \
+  neovim
 
 # brew casks
 
@@ -236,7 +237,6 @@ brew cask install \
   suspicious-package \
   qlcolorcode \
   quicklook-json \
-  webpquicklook \
-  iterm2
+  webpquicklook
 
 brew cleanup

@@ -34,3 +34,11 @@ if [[ ! -f diff-so-fancy ]]; then
   chmod +x $HOME/bin/*
   cd -
 fi
+
+if [[ ! -f nvim ]]; then
+  apt install neovim
+fi
+
+if [[ ! -f tmux ]]; then
+  apt install tmux
+fi

@@ -618,7 +618,7 @@ sudo mdutil -i on / >/dev/null
 sudo mdutil -E / >/dev/null
 
 ###############################################################################
-# Terminal & iTerm 2                                                          #
+# Terminal
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
@@ -682,13 +682,6 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Disable the annoying line marks
 defaults write com.apple.Terminal ShowLineMarks -int 0
-
-# Install the Solarized Dark theme for iTerm
-open "./macos/Pastel.itermcolors"
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
 ###############################################################################
 # Time Machine                                                                #
 ###############################################################################

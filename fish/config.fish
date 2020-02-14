@@ -8,7 +8,7 @@ if test -e (dirname (status -f))/.fns
   . (dirname (status -f))/.fns
 end
 
-# kitty completion
-if command -v kitty> /dev/null 2>&1
-  kitty + complete setup fish | source
+if status is-interactive
+and not set -q TMUX
+  exec tmux
 end
