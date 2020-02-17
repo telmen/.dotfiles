@@ -162,3 +162,4 @@ alias path='echo -e $PATH//:/\\n'
 
 alias ll="exa --group-directories-first -Bhl"
 alias ls="exa"
+alias vim=nvim || vim
