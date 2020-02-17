@@ -10,10 +10,16 @@ alias rni="react-native run-ios"
 alias d="instruments -s devices"
 alias localtunnel="lt"
 alias ad="adb devices"
-# Editor
+
+# vscode
 function codeFn
   command -v code-insiders >/dev/null 2>&1 && code-insiders . || code .
 end
+
+function vimFn
+  command -v nvim >/dev/null 2>&1 && nvim || vim
+end
+
 alias c='codeFn -r'
 alias v="vim $1"
 alias c+x="chmod +x"
@@ -162,4 +168,4 @@ alias path='echo -e $PATH//:/\\n'
 
 alias ll="exa --group-directories-first -Bhl"
 alias ls="exa"
-alias vim=nvim || vim
+alias v=vimFn
