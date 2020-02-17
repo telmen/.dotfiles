@@ -1,6 +1,7 @@
-# Telmen's dotfiles
+# dotfiles and configs
 
-## What included
+## todo
 
-- fish shell
-- covers macOS
+- linux
+ - [ ] neovim, tmux
+- [ ] run sync if dotfiles are changed
