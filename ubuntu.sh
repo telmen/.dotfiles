@@ -25,8 +25,6 @@ fi
 # install yarn
 curl -o- -L https://yarnpkg.com/install.sh | bash
 
-# TODO: Find better way
-
 if [[ ! -f diff-so-fancy ]]; then
   # install diff-so-fancy
   cd $HOME/bin
@@ -35,10 +33,4 @@ if [[ ! -f diff-so-fancy ]]; then
   cd -
 fi
 
-if [[ ! -f nvim ]]; then
-  apt install neovim
-fi
-
-if [[ ! -f tmux ]]; then
-  apt install tmux
-fi
+# install tmux & nvim from source
