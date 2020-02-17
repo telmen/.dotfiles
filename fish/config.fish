@@ -10,5 +10,7 @@ end
 
 if status is-interactive
 and not set -q TMUX
-  exec tmux
+  if type -q tmux
+    exec tmux
+  end
 end
