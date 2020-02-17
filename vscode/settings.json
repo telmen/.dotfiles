@@ -62,7 +62,6 @@
   "vscode_custom_css.imports": [
     "file:///Users/telmen/dotfiles/vscode/custom.css"
   ],
-  "workbench.colorTheme": "Gruvbox Dark Medium",
   "workbench.iconTheme": null,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -134,5 +133,6 @@
     "terminal.ansiRed": "#D75F5F",
     "terminal.ansiWhite": "#DAB997",
     "terminal.ansiYellow": "#FFAF00"
-  }
+  },
+  "workbench.colorTheme": "Gruvbox Dark (Medium)"
 }
