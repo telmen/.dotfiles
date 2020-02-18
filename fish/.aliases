@@ -17,7 +17,7 @@ function codeFn
 end
 
 function vimFn
-  command -v nvim >/dev/null 2>&1 && nvim || vim
+  command -v nvim >/dev/null 2>&1 && nvim $argv || vim $argv
 end
 
 alias c='codeFn -r'

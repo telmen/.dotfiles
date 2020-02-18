@@ -15,7 +15,7 @@ name = telmen
 email = flyinvoke@gmail.com
 signingKey = 2D3B964912A6D8DB
 [core]
-editor = vim
+editor = nvim
 autocrlf = input
 pager = diff-so-fancy | less --tabs=2 -SRFX
 trustctime = false
