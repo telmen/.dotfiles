@@ -111,28 +111,5 @@
         }
       ]
     }
-  },
-  "workbench.colorCustomizations": {
-    "terminal.background": "#262626",
-    "terminal.foreground": "#DAB997",
-    "terminalCursor.background": "#DAB997",
-    "terminalCursor.foreground": "#DAB997",
-    "terminal.ansiBlack": "#262626",
-    "terminal.ansiBlue": "#83ADAD",
-    "terminal.ansiBrightBlack": "#8A8A8A",
-    "terminal.ansiBrightBlue": "#83ADAD",
-    "terminal.ansiBrightCyan": "#85AD85",
-    "terminal.ansiBrightGreen": "#AFAF00",
-    "terminal.ansiBrightMagenta": "#D485AD",
-    "terminal.ansiBrightRed": "#D75F5F",
-    "terminal.ansiBrightWhite": "#EBDBB2",
-    "terminal.ansiBrightYellow": "#FFAF00",
-    "terminal.ansiCyan": "#85AD85",
-    "terminal.ansiGreen": "#AFAF00",
-    "terminal.ansiMagenta": "#D485AD",
-    "terminal.ansiRed": "#D75F5F",
-    "terminal.ansiWhite": "#DAB997",
-    "terminal.ansiYellow": "#FFAF00"
-  },
-  "workbench.colorTheme": "Gruvbox Dark (Medium)"
+  }
 }
