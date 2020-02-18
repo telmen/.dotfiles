@@ -836,18 +836,6 @@ else
   rm -rf $tmpdir/alfred.dmg
 fi
 
-# Visual Studio Code
-
-if [ -f /Applications/Visual\ Studio\ Code.app ]; then
-  # Don't download if app already exists
-  echo "VS Code already installed."
-else
-  wget -O $tmpdir/vscode.zip https://az764295.vo.msecnd.net/stable/6ab598523be7a800d7f3eb4d92d7ab9a66069390/VSCode-darwin-stable.zip
-  unzip $tmpdir/vscode.zip
-  ditto -rsrc "$tmpdir/Visual\ Studio\ Code.app" /Applications/Visual\ Studio\ Code.app
-  rm -rf $tmpdir/vscode.zip
-fi
-
 unset tmpdir
 
 ###############################################################################
