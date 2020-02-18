@@ -1,11 +1,22 @@
+set showcmd
+set nobackup
 set expandtab
 set number
 set ruler
 set ai
-set tabstop=2
 set hlsearch
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
+set novisualbell
+set backspace=indent,eol,start
+set sts=2 ts=2 sw=2
 set ic
+
 syntax enable
+filetype on
+filetype indent on
 
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)

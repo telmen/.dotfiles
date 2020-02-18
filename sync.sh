@@ -1,26 +1,33 @@
 #!/bin/bash
 
-function fishshell() {
-  echo "fish shell: creating symbolic links"
-  if [[ -d ~/.config/fish ]]; then
-    echo "fish shell: a directory already exists. Creating backup folder of current configuration."
-    cp -rf ~/.config/fish ~/fish.backup
-    rm -rf ~/.config/fish
-  fi
-  ln -sfvnr fish ~/.config/fish
-  echo "fish shell: done"
-}
-
 function dotfiles() {
-  echo "dotfiles: creating symbolic links"
+  # Fix me
   find . -type f -name '.*' -printf '%f\n' | while read f; do
     ln -sfvnr $f ~
   done
-  echo "dotfiles: done"
+  if [[ -d ~/.config/fish ]]; then
+    echo "~/.config/fish already exists... Skipping."
+  else
+    ln -sfvnr fish ~/.config/fish
+    echo "Done"
+  fi
+}
+
+function configs() {
+  config_files=$( find "$(pwd)/config" -maxdepth 1 2>/dev/null )
+  for config in $config_files; do
+    target="$HOME/.config/$( basename "$config" )"
+    if [ -e "$target" ]; then
+      echo "~${target#$HOME} already exists... Skipping."
+    else
+      echo "Creating symlink for $config"
+      ln -s "$config" "$target"
+    fi
+  done
 }
 
 function fonts() {
-  echo "fonts: copying monospace fonts"
+  echo "Copying monospace fonts"
   if [[ "$OSTYPE" == "darwin"* ]]; then
     rsync -avh fonts/* ~/Library/Fonts
   else
@@ -32,26 +39,28 @@ function fonts() {
     fi
     fc-cache -fv
   fi
-  echo "fonts: done"
+  echo "Done"
 }
 
-echo "============================"
-echo "starting sync script"
-read -p "this may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-echo ""
+read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "====================="
-  echo "sync: executing scripts"
-  echo "====================="
-  dotfiles
-  fishshell
-  fonts
-  echo "====================="
-  echo "sync: done"
-  echo "====================="
+  echo -e "\\n"
+  read -p "Sync dotfiles?" -n 1
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    dotfiles
+  fi
+  echo -e "\\n"
+  read -p "Sync configs?" -n 1
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    configs
+  fi
+  echo -e "\\n"
+  read -p "Sync fonts?" -n 1
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    fonts
+  fi
 fi
 
 unset dotfiles
-unset vscode
 unset fonts
-unset fishshell
+unset configs

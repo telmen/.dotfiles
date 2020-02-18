@@ -856,7 +856,6 @@ for app in "Activity Monitor" \
   "Photos" \
   "Safari" \
   "SystemUIServer" \
-  "iTerm2" \
   "Terminal"; do
   killall "${app}" &>/dev/null
 done

@@ -13,10 +13,6 @@ function install_fish() {
 }
 
 install_fish
-
-# check if distro is Ubuntu or other OS
-# TODO: Download code editor and other essential apps
-
 # create custom bin folder at user's home
 if [[ ! -d $HOME/bin ]]; then
   mkdir $HOME/bin

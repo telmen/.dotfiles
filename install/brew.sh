@@ -9,11 +9,11 @@ brew install coreutils
 brew install moreutils
 brew install findutils
 
+# Do some cleaning
+
 brew install \
   ack \
   adns \
-  aircrack-ng \
-  antigen \
   aom \
   applesimutils \
   apr \
@@ -22,10 +22,7 @@ brew install \
   arp-scan \
   aspell \
   autoconf \
-  autojump \
   automake \
-  bash \
-  bash-completion@2 \
   bat \
   bfg \
   binutils \
@@ -33,7 +30,6 @@ brew install \
   brotli \
   c-ares \
   cairo \
-  carthage \
   cifer \
   cmake \
   cocoapods \
@@ -43,7 +39,6 @@ brew install \
   dive \
   dns2tcp \
   elixir \
-  erlang \
   exercism \
   fcrackzip \
   ffmpeg \
@@ -132,9 +127,7 @@ brew install \
   little-cms2 \
   lua \
   lynx \
-  mongodb-community \
   mpfr \
-  mysql-client \
   ncurses \
   netpbm \
   nettle \
@@ -157,8 +150,6 @@ brew install \
   pcre \
   pcre2 \
   perl \
-  phantomjs \
-  php \
   pigz \
   pinentry \
   pixman \
@@ -217,7 +208,8 @@ brew install \
   zopfli \
   fish \
   exa \
-  neovim
+  neovim \
+  git-flow
 
 # brew casks
 

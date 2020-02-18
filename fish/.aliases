@@ -17,7 +17,7 @@ function codeFn
 end
 
 function vimFn
-  command -v nvim >/dev/null 2>&1 && nvim $argv || vim $argv
+  command -v nvim >/dev/null 2>&1 && nvim $argv || /usr/bin/vim $argv
 end
 
 alias c='codeFn -r'
@@ -169,3 +169,4 @@ alias path='echo -e $PATH//:/\\n'
 alias ll="exa --group-directories-first -Bhl"
 alias ls="exa"
 alias v=vimFn
+alias vim=vimFn
