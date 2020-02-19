@@ -1,3 +1,4 @@
+set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden'
 export EDITOR=nvim
 export CUSTOM_BIN=$HOME/bin
 export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin

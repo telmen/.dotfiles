@@ -45,8 +45,22 @@ function! s:swap_down()
     exec n + 1
 endfunction
 
+let g:ale_linters = {'python': ['mypy', 'flake8', 'pylint']}
+let g:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['prettier', 'eslint'] }
+let g:ale_fix_on_save = 1
+
 noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
+
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>f :Rg<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
+nmap <F6> <Plug>(ale_fix)
+nmap <silent> [c <Plug>(ale_previous_wrap)
+nmap <silent> ]c <Plug>(ale_next_wrap)
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -74,8 +88,14 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 " Plugin options
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'editorconfig/editorconfig-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
