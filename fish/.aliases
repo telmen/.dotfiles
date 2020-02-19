@@ -11,17 +11,10 @@ alias d="instruments -s devices"
 alias localtunnel="lt"
 alias ad="adb devices"
 
-# vscode
-function codeFn
-  command -v code-insiders >/dev/null 2>&1 && code-insiders . || code .
-end
-
 function vimFn
   command -v nvim >/dev/null 2>&1 && nvim $argv || /usr/bin/vim $argv
 end
 
-alias c='codeFn -r'
-alias v="vim $1"
 alias c+x="chmod +x"
 
 alias g="git"
