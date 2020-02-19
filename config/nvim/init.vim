@@ -20,6 +20,7 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set clipboard=unnamedplus
 
 syntax enable
 filetype on
@@ -176,8 +177,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
+Plug 'markonm/traces.vim'
 
 " Initialize plugin system
 call plug#end()
 
 colo gruvbox
+
+hi Search cterm=NONE ctermfg=white ctermbg=darkgrey
