@@ -104,6 +104,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 if has('nvim') && !exists('g:fzf_layout')
   autocmd! FileType fzf
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
@@ -238,7 +239,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggleVCS' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -268,6 +269,7 @@ Plug 'markonm/traces.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'jamessan/vim-gnupg'
 
 " Initialize plugin system
 call plug#end()
@@ -318,3 +320,16 @@ command! -bang Args call fzf#run(fzf#wrap('args',
     \ {'source': map([argidx()]+(argidx()==0?[]:range(argc())[0:argidx()-1])+range(argc())[argidx()+1:], 'argv(v:val)')}, <bang>0))
 
 nmap <silent> <F5> :NERDTreeToggleVCS<CR>
+
+map [b :bprevious<CR>
+map ]b :bnext<CR>
+
+let g:GPGPreferArmor=1
+let g:GPGPreferSign=1
+let g:GPGDefaultRecipients=["flyinvoke@gmail.com"]
+
+augroup GPG
+    autocmd!
+    autocmd FileType gpg setlocal updatetime=12000
+    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+augroup END

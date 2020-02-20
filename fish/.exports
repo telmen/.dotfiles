@@ -1,3 +1,4 @@
+set -gx GPG_TTY 'tty'
 set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden'
 set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
 set LINUX_BREW $HOME/.linuxbrew/bin

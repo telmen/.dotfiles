@@ -3,3 +3,4 @@ fish/functions
 fish/conf.d
 fish/completions
 fish/fish_variables
+config/nvim/.netrwhist
