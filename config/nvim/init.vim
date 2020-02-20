@@ -21,10 +21,15 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set clipboard=unnamedplus
+set relativenumber
+set mouse=a
+let mapleader = ","
+let localmapleader = ","
 
 syntax enable
 filetype on
 filetype indent on
+filetype plugin on
 
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
@@ -53,6 +58,13 @@ function! s:swap_down()
     exec n + 1
 endfunction
 
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:netrw_liststyle = 3
 let g:ale_linters = {'python': ['mypy', 'flake8', 'pylint']}
 let g:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['prettier', 'eslint'] }
 let g:ale_fix_on_save = 1
@@ -61,6 +73,43 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='bubblegum'
+
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_java = 1
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'up': '~40%', 'window': '10new'}
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
+
 
 noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
 noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
@@ -123,11 +172,13 @@ xmap <silent> <TAB> <Plug>(coc-range-select)
 
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -bang -complete=dir -nargs=* LS
+    \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :call fzf#run({'source': 'git ls-files', 'sink': 'tabedit', 'options': '--multi --reverse'})<CR>
 nnoremap <Leader>f :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
@@ -136,6 +187,42 @@ nnoremap <Leader>T :Tags<CR>
 nmap <F6> <Plug>(ale_fix)
 nmap <silent> [c <Plug>(ale_previous_wrap)
 nmap <silent> ]c <Plug>(ale_next_wrap)
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
+nnoremap <silent> <Leader>s :call fzf#run({
+\   'down': '40%',
+\   'sink': 'botright split' })<CR>
+
+" Open files in vertical horizontal split
+nnoremap <silent> <Leader>v :call fzf#run({
+\   'right': winwidth('.') / 2,
+\   'sink':  'vertical botright split' })<CR>
+
+inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
+
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
@@ -178,6 +265,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
 Plug 'markonm/traces.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 
 " Initialize plugin system
 call plug#end()
@@ -185,3 +275,46 @@ call plug#end()
 colo gruvbox
 
 hi Search cterm=NONE ctermfg=white ctermbg=darkgrey
+hi Visual cterm=NONE ctermfg=white ctermbg=darkgrey
+
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+
+command! -bang ProjectFiles call fzf#vim#files('~/projects', <bang>0)
+command! -bang WorkFiles call fzf#vim#files('~/work', <bang>0)
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
+
+command! -bang Args call fzf#run(fzf#wrap('args',
+    \ {'source': map([argidx()]+(argidx()==0?[]:range(argc())[0:argidx()-1])+range(argc())[argidx()+1:], 'argv(v:val)')}, <bang>0))
+
+nmap <silent> <F5> :NERDTreeToggleVCS<CR>
