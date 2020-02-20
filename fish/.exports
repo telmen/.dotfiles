@@ -1,4 +1,6 @@
 set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden'
+set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
+set LINUX_BREW $HOME/.linuxbrew/bin
 export EDITOR=nvim
 export CUSTOM_BIN=$HOME/bin
 export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin
@@ -24,4 +26,4 @@ export YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.
 export OPEN_SSL="/usr/local/opt/openssl/bin:$PATH"
 export RUBY="/usr/local/opt/ruby/bin"
 export RVM="$HOME/.rvm/bin"
-export PATH="$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS"
+export PATH="$PATH:$LINUX_BREW:$LINUX_BREW_ALTERNATE:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS"

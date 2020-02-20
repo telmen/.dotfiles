@@ -163,3 +163,4 @@ alias ll="exa --group-directories-first -Bhl"
 alias ls="exa"
 alias v=vimFn
 alias vim=vimFn
+alias f='source ~/.config/fish/config.fish'

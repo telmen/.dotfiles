@@ -13,10 +13,15 @@ function install_fish() {
 }
 
 install_fish
+
 # create custom bin folder at user's home
 if [[ ! -d $HOME/bin ]]; then
   mkdir $HOME/bin
 fi
+
+# install linuxbrew
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
 # install yarn
 curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -30,3 +35,6 @@ if [[ ! -f diff-so-fancy ]]; then
 fi
 
 # install tmux & nvim from source
+
+brew install neovim
+brew install tmux
