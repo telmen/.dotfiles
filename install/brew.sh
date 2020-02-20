@@ -207,7 +207,6 @@ brew install \
   yarn \
   zopfli \
   fish \
-  exa \
   neovim \
   git-flow
 
