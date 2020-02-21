@@ -66,7 +66,12 @@ endfunction
 
 let g:netrw_liststyle = 3
 let g:ale_linters = {'python': ['mypy', 'flake8', 'pylint']}
-let g:ale_fixers = {'python': ['black', 'isort'], 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = {
+      \ 'python': ['black', 'isort'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'json': ['prettier']
+      \}
+let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -179,7 +184,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
-nnoremap <C-p> :call fzf#run({'source': 'git ls-files', 'sink': 'tabedit', 'options': '--multi --reverse'})<CR>
+nnoremap <C-p> :call fzf#run(fzf#wrap({'sink': 'tabedit', 'options': '--multi --reverse'}))<CR>
 nnoremap <Leader>f :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>

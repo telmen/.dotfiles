@@ -15,3 +15,4 @@ and not set -q TMUX
   end
 end
 
+fish_vi_key_bindings
