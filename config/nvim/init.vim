@@ -19,7 +19,6 @@ set nowritebackup
 set cmdheight=2
 set updatetime=300
 set shortmess+=c
-set signcolumn=yes
 set clipboard=unnamedplus
 set relativenumber
 set mouse=a
@@ -69,7 +68,8 @@ let g:ale_linters = {'python': ['mypy', 'flake8', 'pylint']}
 let g:ale_fixers = {
       \ 'python': ['black', 'isort'],
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'json': ['prettier']
+      \ 'json': ['prettier'],
+      \ 'html': ['prettier']
       \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -267,7 +267,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
 Plug 'markonm/traces.vim'
@@ -275,6 +274,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'jamessan/vim-gnupg'
+Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -338,3 +338,5 @@ augroup GPG
     autocmd FileType gpg setlocal updatetime=12000
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
+
+set cc=
