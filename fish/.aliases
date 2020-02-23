@@ -2,13 +2,14 @@
 
 alias rm='rm -i'
 alias o=open
+
 # React native
+
 alias rn="react-native"
 alias rns="react-native start"
 alias rna="react-native run-android"
 alias rni="react-native run-ios"
 alias d="instruments -s devices"
-alias localtunnel="lt"
 alias ad="adb devices"
 
 function vimFn
@@ -17,14 +18,7 @@ end
 
 alias c+x="chmod +x"
 
-alias g="git"
-alias groot='cd (git rev-parse --show-cdup)'
-
 # Shortcuts
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias w="cd ~/work"
-alias p="cd ~/project"
 alias g="git"
 
 # Detect which `ls` flavor is in use
@@ -165,3 +159,5 @@ alias v=vimFn
 alias vim=vimFn
 alias f='source ~/.config/fish/config.fish'
 alias vconf='v ~/.config/nvim/init.vim'
+alias fconf='v ~/.config/fish/config.fish'
+alias kconf='v ~/.config/kitty/kitty.conf'

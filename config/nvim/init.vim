@@ -1,8 +1,42 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'terryma/vim-multiple-cursors'
+Plug 'morhetz/gruvbox'
+Plug 'markonm/traces.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
+Plug 'jamessan/vim-gnupg'
+Plug 'mattn/emmet-vim'
+Plug 'majutsushi/tagbar'
+Plug 'ternjs/tern_for_vim'
+
+" Initialize plugin system
+call plug#end()
+
+syntax enable
+filetype on
+filetype indent on
+filetype plugin on
+
 set encoding=utf-8
 set showcmd
 set nobackup
 set expandtab
 set number
+set nowrap
 set ruler
 set ai
 set hlsearch
@@ -18,44 +52,48 @@ set hidden
 set nowritebackup
 set cmdheight=2
 set updatetime=300
+set signcolumn=yes
 set shortmess+=c
 set clipboard=unnamedplus
+set noruler
+set noshowmode
 set relativenumber
 set mouse=a
 let mapleader = ","
 let localmapleader = ","
 
-syntax enable
-filetype on
-filetype indent on
-filetype plugin on
+set splitbelow
+set splitright
 
-function! s:swap_lines(n1, n2)
-    let line1 = getline(a:n1)
-    let line2 = getline(a:n2)
-    call setline(a:n1, line2)
-    call setline(a:n2, line1)
-endfunction
+nnoremap k gk
+nnoremap j gj
 
-function! s:swap_up()
-    let n = line('.')
-    if n == 1
-        return
-    endif
+nnoremap gp `[v`]
 
-    call s:swap_lines(n, n - 1)
-    exec n - 1
-endfunction
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
-function! s:swap_down()
-    let n = line('.')
-    if n == line('$')
-        return
-    endif
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-    call s:swap_lines(n, n + 1)
-    exec n + 1
-endfunction
+nnoremap <C-s> :w<CR>
+inoremap <C-s> :w<CR>
+vnoremap <C-s> :w<CR>
+
+nnoremap <C-/> :Commentary<CR>
+vnoremap <C-/> :Commentary<CR>
+
+nnoremap <Leader>/ :noh<CR>
+nnoremap <Leader>p :b#<CR>
+
+noremap <Leader>n :set number!<CR>
+
+" Toggle wrapping with <Leader>w
+noremap <Leader>w :set wrap!<CR>
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -63,8 +101,25 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 
+let g:tagbar_type_javascript = {
+      \ 'ctagstype': 'javascript',
+      \ 'kinds': [
+      \ 'A:arrays',
+      \ 'P:properties',
+      \ 'T:tags',
+      \ 'O:objects',
+      \ 'G:generator functions',
+      \ 'F:functions',
+      \ 'C:constructors/classes',
+      \ 'M:methods',
+      \ 'V:variables',
+      \ 'I:imports',
+      \ 'E:exports',
+      \ 'S:styled components'
+      \ ]}
 let g:netrw_liststyle = 3
-let g:ale_linters = {'python': ['mypy', 'flake8', 'pylint']}
+let g:ale_set_highlights = 0
+let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {
       \ 'python': ['black', 'isort'],
       \ 'javascript': ['prettier', 'eslint'],
@@ -73,20 +128,6 @@ let g:ale_fixers = {
       \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='bubblegum'
-
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDAltDelims_java = 1
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1
 
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
@@ -116,10 +157,6 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-
-noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
-noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -131,7 +168,6 @@ function! s:check_back_space() abort
 endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -184,15 +220,9 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 
-nnoremap <C-p> :call fzf#run(fzf#wrap({'sink': 'tabedit', 'options': '--multi --reverse'}))<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Rg<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>h :History<CR>
-nnoremap <Leader>t :BTags<CR>
-nnoremap <Leader>T :Tags<CR>
 nmap <F6> <Plug>(ale_fix)
-nmap <silent> [c <Plug>(ale_previous_wrap)
-nmap <silent> ]c <Plug>(ale_next_wrap)
 nnoremap <silent> <Leader>C :call fzf#run({
 \   'source':
 \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -209,9 +239,6 @@ nnoremap <silent> <Leader>s :call fzf#run({
 nnoremap <silent> <Leader>v :call fzf#run({
 \   'right': winwidth('.') / 2,
 \   'sink':  'vertical botright split' })<CR>
-
-inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
-
 function! s:buflist()
   redir => ls
   silent ls
@@ -230,84 +257,11 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggleVCS' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'editorconfig/editorconfig-vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'preservim/nerdcommenter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
-Plug 'morhetz/gruvbox'
-Plug 'markonm/traces.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-repeat'
-Plug 'jamessan/vim-gnupg'
-Plug 'mattn/emmet-vim'
-
-" Initialize plugin system
-call plug#end()
-
 colo gruvbox
 
 hi Search cterm=NONE ctermfg=white ctermbg=darkgrey
 hi Visual cterm=NONE ctermfg=white ctermbg=darkgrey
 
-function! s:line_handler(l)
-  let keys = split(a:l, ':\t')
-  exec 'buf' keys[0]
-  exec keys[1]
-  normal! ^zz
-endfunction
-
-function! s:buffer_lines()
-  let res = []
-  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
-  endfor
-  return res
-endfunction
-
-command! FZFLines call fzf#run({
-\   'source':  <sid>buffer_lines(),
-\   'sink':    function('<sid>line_handler'),
-\   'options': '--extended --nth=3..',
-\   'down':    '60%'
-\})
-
-command! -bang ProjectFiles call fzf#vim#files('~/projects', <bang>0)
-command! -bang WorkFiles call fzf#vim#files('~/work', <bang>0)
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
@@ -321,13 +275,10 @@ endfunction
 
 command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 
-command! -bang Args call fzf#run(fzf#wrap('args',
-    \ {'source': map([argidx()]+(argidx()==0?[]:range(argc())[0:argidx()-1])+range(argc())[argidx()+1:], 'argv(v:val)')}, <bang>0))
-
-nmap <silent> <F5> :NERDTreeToggleVCS<CR>
-
 map [b :bprevious<CR>
 map ]b :bnext<CR>
+
+" GPG
 
 let g:GPGPreferArmor=1
 let g:GPGPreferSign=1
@@ -338,5 +289,3 @@ augroup GPG
     autocmd FileType gpg setlocal updatetime=12000
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
-
-set cc=
