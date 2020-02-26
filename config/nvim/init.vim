@@ -22,6 +22,8 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
 Plug 'ternjs/tern_for_vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Initialize plugin system
 call plug#end()
@@ -84,22 +86,31 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> :w<CR>
 vnoremap <C-s> :w<CR>
 
-nnoremap <C-/> :Commentary<CR>
-vnoremap <C-/> :Commentary<CR>
+nnoremap K :tabn<CR>
+inoremap K :tabn<CR>
+vnoremap K :tabn<CR>
+nnoremap J :tabp<CR>
+inoremap J :tabp<CR>
+vnoremap J :tabp<CR>
 
 nnoremap <Leader>/ :noh<CR>
-nnoremap <Leader>p :b#<CR>
+nnoremap <Leader>` :b#<CR>
 
 noremap <Leader>n :set number!<CR>
 
 " Toggle wrapping with <Leader>w
-noremap <Leader>w :set wrap!<CR>
+noremap <Leader>w :bd<CR>
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
   cc
+Plug 'bagrat/vim-buffet'
 endfunction
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='base16_gruvbox_dark_hard'
 
 let g:tagbar_type_javascript = {
       \ 'ctagstype': 'javascript',
@@ -134,7 +145,7 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'up': '~40%', 'window': '10new'}
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -150,12 +161,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-if has('nvim') && !exists('g:fzf_layout')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-endif
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -179,7 +184,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -214,27 +219,41 @@ xmap <silent> <TAB> <Plug>(coc-range-select)
 
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Format :call CocAction('format')
+
 command! -bang -complete=dir -nargs=* LS
     \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nnoremap <C-p> :Files<CR>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'tabedit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'sink': 'tabedit','options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>f :Rg<CR>
 nmap <F6> <Plug>(ale_fix)
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':    'colo',
-\   'options': '+m',
-\   'left':    30
-\ })<CR>
 nnoremap <silent> <Leader>s :call fzf#run({
 \   'down': '40%',
 \   'sink': 'botright split' })<CR>
-
 " Open files in vertical horizontal split
 nnoremap <silent> <Leader>v :call fzf#run({
 \   'right': winwidth('.') / 2,
@@ -259,21 +278,8 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 
 colo gruvbox
 
-hi Search cterm=NONE ctermfg=white ctermbg=darkgrey
-hi Visual cterm=NONE ctermfg=white ctermbg=darkgrey
-
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
+hi Search cterm=NONE ctermfg=black ctermbg=grey
+hi Visual cterm=NONE ctermfg=black ctermbg=grey
 
 map [b :bprevious<CR>
 map ]b :bnext<CR>
