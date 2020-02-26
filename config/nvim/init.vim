@@ -24,6 +24,8 @@ Plug 'majutsushi/tagbar'
 Plug 'ternjs/tern_for_vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Initialize plugin system
 call plug#end()
