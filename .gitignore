@@ -2,5 +2,7 @@
 fish/functions
 fish/conf.d
 fish/completions
+!fish/functions/fish_mode_prompt.fish
+!fish/functions/fish_prompt.fish
 config/nvim/.netrwhist
 *.swp
