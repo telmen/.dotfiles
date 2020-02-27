@@ -10,8 +10,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'terryma/vim-multiple-cursors'
-Plug 'morhetz/gruvbox'
 Plug 'markonm/traces.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -27,6 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -34,10 +33,14 @@ call plug#end()
 set nocompatible
 
 syntax enable
+colo nord 
 filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
+hi Search cterm=NONE ctermfg=black ctermbg=grey
+hi Visual cterm=NONE ctermfg=black ctermbg=grey
+hi ExtraWhitespace guibg=#bd5353 ctermbg=131
 
 " Options {{{1
 set ai
@@ -83,7 +86,9 @@ set updatetime=300
 set wildcharm=<C-z>
 set wildignorecase
 set wildmenu
-
+let mapleader = ","
+let localmapleader = ","
+" GUI options {{{
 if has("gui_running")
     set guioptions-=T
     set guioptions-=r
@@ -93,45 +98,45 @@ if has("gui_running")
     set guioptions-=L
     set guitablabel=%t
 endif
+" Commands {{{1
+command! W w !sudo tee % &>/dev/null
+command! VIM source ~/.config/nvim/init.vim
 
-let mapleader = ","
-let localmapleader = ","
-
-
+" Mappings {{{1
 nnoremap k gk
 nnoremap j gj
-
 nnoremap gp `[v`]
-
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
 inoremap <C-j> <Esc>:m .+1<CR>==gi
 inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
 nnoremap <C-s> :w<CR>
 inoremap <C-s> :w<CR>
 vnoremap <C-s> :w<CR>
-
 nnoremap K :tabn<CR>
-inoremap K :tabn<CR>
-vnoremap K :tabn<CR>
 nnoremap J :tabp<CR>
-inoremap J :tabp<CR>
-vnoremap J :tabp<CR>
-
 nnoremap <Leader>/ :noh<CR>
 nnoremap <Leader>` :b#<CR>
-
 noremap <Leader>n :set number!<CR>
-
-" Toggle wrapping with <Leader>w
 noremap <Leader>w :bd<CR>
+nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+map [b :bprevious<CR>
+map ]b :bnext<CR>
+inoremap <C-y> <Esc>:sil exe ".!which <cWORD>" <bar> s/^/#!/ <bar> filetype detect<cr>YpDi
+vnoremap & :s<CR>
+noremap H ^
+noremap L g_
+vnoremap <C-c> "+ygv"*y
+nnoremap <C-t> :tabnew<cr>
+nnoremap <RightMouse> "+]p
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+nnoremap Q :qa!<cr>
 
+" Plugin Options  {{{1
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
@@ -139,10 +144,20 @@ function! s:build_quickfix_list(lines)
 Plug 'bagrat/vim-buffet'
 endfunction
 
+" GPG
+let g:GPGPreferArmor=1
+let g:GPGPreferSign=1
+let g:GPGDefaultRecipients=["flyinvoke@gmail.com"]
+
+augroup GPG
+    autocmd!
+    autocmd FileType gpg setlocal updatetime=12000
+    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+augroup END
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='base16_gruvbox_dark_hard'
-
+let g:airline_theme='nord'
 let g:tagbar_type_javascript = {
       \ 'ctagstype': 'javascript',
       \ 'kinds': [
@@ -170,7 +185,6 @@ let g:ale_fixers = {
       \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
-
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
@@ -193,6 +207,17 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" Plugin mappings {{{2
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -214,7 +239,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
 nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -227,34 +251,21 @@ endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
-augroup mygroup
+augroup Coc
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
-
 nmap <leader>qf  <Plug>(coc-fix-current)
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-command! -nargs=0 Format :call CocAction('format')
-
-command! -bang -complete=dir -nargs=* LS
-    \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
@@ -266,6 +277,34 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <Leader>p :Files<CR>
+nnoremap <Leader>f :Rg<CR>
+nmap <F6> <Plug>(ale_fix)
+nnoremap <silent> <Leader>s :call fzf#run({
+\   'down': '40%',
+\   'sink': 'botright split' })<CR>
+" Open files in vertical horizontal split
+nnoremap <silent> <Leader>v :call fzf#run({
+\   'right': winwidth('.') / 2,
+\   'sink':  'vertical botright split' })<CR>
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
+" Plugin commands {{{2
+
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Format :call CocAction('format')
+
+command! -bang -complete=dir -nargs=* LS
+    \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'tabedit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
@@ -279,16 +318,6 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
-nnoremap <Leader>p :Files<CR>
-nnoremap <Leader>f :Rg<CR>
-nmap <F6> <Plug>(ale_fix)
-nnoremap <silent> <Leader>s :call fzf#run({
-\   'down': '40%',
-\   'sink': 'botright split' })<CR>
-" Open files in vertical horizontal split
-nnoremap <silent> <Leader>v :call fzf#run({
-\   'right': winwidth('.') / 2,
-\   'sink':  'vertical botright split' })<CR>
 function! s:buflist()
   redir => ls
   silent ls
@@ -300,49 +329,7 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
-
-colo gruvbox
-
-command! W w !sudo tee % &>/dev/null
-" command! VIM !source ~/.config/nvim/init.vim
-
-hi Search cterm=NONE ctermfg=black ctermbg=grey
-hi Visual cterm=NONE ctermfg=black ctermbg=grey
-hi ExtraWhitespace guibg=#bd5353 ctermbg=131
-
-inoremap <C-y> <Esc>:sil exe ".!which <cWORD>" <bar> s/^/#!/ <bar> filetype detect<cr>YpDi
+" Leaders {{{1
 inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
 inoremap <leader>D <C-r>=strftime('%D')<cr>
-
-vnoremap & :s<CR>
-noremap H ^
-noremap L g_
-vnoremap <C-c> "+ygv"*y
-nnoremap <C-t> :tabnew<cr>
-nnoremap <RightMouse> "+]p
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-nnoremap Q :qa!<cr>
-
-map [b :bprevious<CR>
-map ]b :bnext<CR>
-
-" GPG
-
-let g:GPGPreferArmor=1
-let g:GPGPreferSign=1
-let g:GPGDefaultRecipients=["flyinvoke@gmail.com"]
-
-augroup GPG
-    autocmd!
-    autocmd FileType gpg setlocal updatetime=12000
-    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
-augroup END
-
-" }}}
+" }}} :vim fdm=marker
