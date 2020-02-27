@@ -1,3 +1,4 @@
+" Plugins  {{{1
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
@@ -27,47 +28,75 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-" Initialize plugin system
 call plug#end()
+
+" Setup {{{1
+set nocompatible
 
 syntax enable
 filetype on
 filetype indent on
 filetype plugin on
+filetype plugin indent on
 
-set encoding=utf-8
-set showcmd
-set nobackup
-set expandtab
-set number
-set nowrap
-set ruler
+" Options {{{1
 set ai
-set hlsearch
-set incsearch
-set showmatch
-set ignorecase
-set smartcase
-set novisualbell
+set autoread
 set backspace=indent,eol,start
-set sts=2 ts=2 sw=2
-set ic
-set hidden
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set signcolumn=yes
-set shortmess+=c
 set clipboard=unnamedplus
+set cmdheight=2
+set encoding=utf-8
+set expandtab
+set fdm=marker
+set hidden
+set hlsearch
+set ic
+set ignorecase
+set incsearch
+set laststatus=2
+set list
+set mouse=a
+set nobackup
+set noequalalways
+set nohlsearch
 set noruler
 set noshowmode
+set novisualbell
+set nowrap
+set nowritebackup
+set number
+set omnifunc=syntaxcomplete#Complete
 set relativenumber
-set mouse=a
+set ruler
+set shiftround
+set shortmess+=c
+set showcmd
+set showmatch
+set signcolumn=yes
+set smartcase
+set smartindent
+set splitbelow
+set splitright
+set sts=2 ts=2 sw=2
+set timeoutlen=600
+set updatetime=300
+set wildcharm=<C-z>
+set wildignorecase
+set wildmenu
+
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=m
+    set guioptions-=l
+    set guioptions-=L
+    set guitablabel=%t
+endif
+
 let mapleader = ","
 let localmapleader = ","
 
-set splitbelow
-set splitright
 
 nnoremap k gk
 nnoremap j gj
@@ -280,8 +309,26 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 
 colo gruvbox
 
+command! W w !sudo tee % &>/dev/null
+" command! VIM !source ~/.config/nvim/init.vim
+
 hi Search cterm=NONE ctermfg=black ctermbg=grey
 hi Visual cterm=NONE ctermfg=black ctermbg=grey
+hi ExtraWhitespace guibg=#bd5353 ctermbg=131
+
+inoremap <C-y> <Esc>:sil exe ".!which <cWORD>" <bar> s/^/#!/ <bar> filetype detect<cr>YpDi
+inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
+inoremap <leader>D <C-r>=strftime('%D')<cr>
+
+vnoremap & :s<CR>
+noremap H ^
+noremap L g_
+vnoremap <C-c> "+ygv"*y
+nnoremap <C-t> :tabnew<cr>
+nnoremap <RightMouse> "+]p
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+nnoremap Q :qa!<cr>
 
 map [b :bprevious<CR>
 map ]b :bnext<CR>
@@ -297,3 +344,5 @@ augroup GPG
     autocmd FileType gpg setlocal updatetime=12000
     autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
+
+" }}}
