@@ -90,13 +90,13 @@ let mapleader = ","
 let localmapleader = ","
 " GUI options {{{
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=m
-    set guioptions-=l
-    set guioptions-=L
-    set guitablabel=%t
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=m
+  set guioptions-=l
+  set guioptions-=L
+  set guitablabel=%t
 endif
 " Commands {{{1
 command! W w !sudo tee % &>/dev/null
@@ -138,9 +138,9 @@ nnoremap Q :qa!<cr>
 
 " Plugin Options  {{{1
 function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
+call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+copen
+cc
 Plug 'bagrat/vim-buffet'
 endfunction
 
@@ -150,61 +150,61 @@ let g:GPGPreferSign=1
 let g:GPGDefaultRecipients=["flyinvoke@gmail.com"]
 
 augroup GPG
-    autocmd!
-    autocmd FileType gpg setlocal updatetime=12000
-    autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
+  autocmd!
+  autocmd FileType gpg setlocal updatetime=12000
+  autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
 augroup END
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_theme='nord'
 let g:tagbar_type_javascript = {
-      \ 'ctagstype': 'javascript',
-      \ 'kinds': [
-      \ 'A:arrays',
-      \ 'P:properties',
-      \ 'T:tags',
-      \ 'O:objects',
-      \ 'G:generator functions',
-      \ 'F:functions',
-      \ 'C:constructors/classes',
-      \ 'M:methods',
-      \ 'V:variables',
-      \ 'I:imports',
-      \ 'E:exports',
-      \ 'S:styled components'
-      \ ]}
+    \ 'ctagstype': 'javascript',
+    \ 'kinds': [
+    \ 'A:arrays',
+    \ 'P:properties',
+    \ 'T:tags',
+    \ 'O:objects',
+    \ 'G:generator functions',
+    \ 'F:functions',
+    \ 'C:constructors/classes',
+    \ 'M:methods',
+    \ 'V:variables',
+    \ 'I:imports',
+    \ 'E:exports',
+    \ 'S:styled components'
+    \ ]}
 let g:netrw_liststyle = 3
 let g:ale_set_highlights = 0
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {
-      \ 'python': ['black', 'isort'],
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'json': ['prettier'],
-      \ 'html': ['prettier']
-      \}
+    \ 'python': ['black', 'isort'],
+    \ 'javascript': ['prettier', 'eslint'],
+    \ 'json': ['prettier'],
+    \ 'html': ['prettier']
+    \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+\ 'ctrl-q': function('s:build_quickfix_list'),
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-x': 'split',
+\ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Ignore'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Plugin mappings {{{2
@@ -219,9 +219,9 @@ nnoremap <silent> <Leader>C :call fzf#run({
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -278,7 +278,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nnoremap <Leader>p :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Rg<CR>
 nmap <F6> <Plug>(ale_fix)
 nnoremap <silent> <Leader>s :call fzf#run({
