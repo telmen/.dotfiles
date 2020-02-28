@@ -33,7 +33,7 @@ call plug#end()
 set nocompatible
 
 syntax enable
-colo nord 
+colo nord
 filetype on
 filetype indent on
 filetype plugin on
