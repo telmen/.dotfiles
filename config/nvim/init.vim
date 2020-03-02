@@ -17,6 +17,9 @@ Plug 'tpope/vim-sensible'
 Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'arcticicestudio/nord-vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
 
 call plug#end()
 
@@ -92,7 +95,8 @@ if has("gui_running")
 endif
 " Commands {{{1
 command! W w !sudo tee % &>/dev/null
-command! VIM source ~/.config/nvim/init.vim
+command! Vimr source ~/.config/nvim/init.vim
+command! Vime e ~/.config/nvim/init.vim
 
 " Mappings {{{1
 nnoremap k gk
@@ -143,7 +147,8 @@ let g:ale_fixers = {
     \ 'python': ['black', 'isort'],
     \ 'javascript': ['prettier', 'eslint'],
     \ 'json': ['prettier'],
-    \ 'html': ['prettier']
+    \ 'html': ['prettier'],
+    \ 'css': ['prettier'],
     \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -216,7 +221,7 @@ nmap <leader>rn <Plug>(coc-rename)
 augroup Coc
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -242,6 +247,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Rg<CR>
+nnoremap <Leader>b :Buffers<CR>
 nmap <F6> <Plug>(ale_fix)
 nnoremap <silent> <Leader>s :call fzf#run({
 \   'down': '40%',
@@ -263,6 +269,16 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 command! -nargs=0 Format :call CocAction('format')
 
+function! MyUniq(lst)
+    return filter(a:lst, 'count(a:lst, v:val) == 1')
+endfunction
+command! -bang Netrwhist call fzf#run(fzf#wrap('netrw_dirhist',
+    \ {'source': 
+    \ !exists('g:netrw_dirhist_cnt')
+    \   ?"tail -n +3 ".g:netrw_home.".netrwhist | cut -d \"'\" -f2- | rev | cut -d \"'\" -f2- | rev | awk '!seen[$0]++'"
+    \   :MyUniq(map(range(1,g:netrw_dirhist_cnt), 'g:netrw_dirhist_{v:val}'))
+    \ }, <bang>0))
+
 command! -bang -complete=dir -nargs=* LS
     \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
 
@@ -271,15 +287,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'tabedit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'sink': 'tabedit','options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
-
-command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 function! s:buflist()
   redir => ls
   silent ls
