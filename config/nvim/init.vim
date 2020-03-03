@@ -16,10 +16,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim'
-Plug 'arcticicestudio/nord-vim'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-
 
 call plug#end()
 
@@ -27,7 +23,6 @@ call plug#end()
 set nocompatible
 
 syntax enable
-colo nord
 filetype on
 filetype indent on
 filetype plugin on
@@ -249,6 +244,7 @@ nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nmap <F6> <Plug>(ale_fix)
+noremap <F5> :NERDTreeToggleVCS<CR>
 nnoremap <silent> <Leader>s :call fzf#run({
 \   'down': '40%',
 \   'sink': 'botright split' })<CR>
