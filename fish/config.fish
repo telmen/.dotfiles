@@ -15,14 +15,4 @@ and not set -q TMUX
   end
 end
 
-if test -r ~/.dir_colors
-  switch (uname)
-    case Darwin
-      eval (gdircolors -c ~/.dir_colors)
-
-    case Linux
-      eval (dircolors -c ~/.dir_colors)
-    end
-end
-
 fish_vi_key_bindings

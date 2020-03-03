@@ -16,6 +16,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim'
+Plug 'arzg/vim-colors-xcode'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+Plug 'andymass/vim-matchup'
 
 call plug#end()
 
@@ -71,7 +78,7 @@ set splitbelow
 set splitright
 set sts=2 ts=2 sw=2
 set timeoutlen=600
-set updatetime=300
+set updatetime=100
 set wildcharm=<C-z>
 set wildignorecase
 set wildmenu
@@ -135,6 +142,16 @@ cc
 Plug 'bagrat/vim-buffet'
 endfunction
 
+let g:signify_sign_add    = '┃'
+let g:signify_sign_change = '┃'
+let g:signify_sign_delete = '•'
+
+let g:xcodedark_green_comments = 1
+let g:xcodedark_emph_idents = 1
+let g:xcodedark_emph_funcs = 1
+let g:xcodedark_match_paren_style = 1
+
+let g:signify_sign_show_count = 0 " Don’t show the number of deleted lines.
 let g:netrw_liststyle = 3
 let g:ale_set_highlights = 0
 let g:ale_linters = {'javascript': ['eslint']}
@@ -169,6 +186,17 @@ let g:fzf_colors =
 \ 'header':  ['fg', 'Comment'] }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+augroup vim-colors-xcode
+    autocmd!
+augroup END
+
+autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
+autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
+
+autocmd User SignifySetup
+            \ execute 'autocmd! signify' |
+            \ autocmd signify TextChanged,TextChangedI * call sy#start()
+
 " Plugin mappings {{{2
 nnoremap <silent> <Leader>C :call fzf#run({
 \   'source':
@@ -178,8 +206,6 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \   'options': '+m',
 \   'left':    30
 \ })<CR>
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -293,6 +319,8 @@ endfunction
 function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
+
+colo xcodedark
 
 " Leaders {{{1
 inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
