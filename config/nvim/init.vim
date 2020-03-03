@@ -1,30 +1,21 @@
 " Plugins  {{{1
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'markonm/traces.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
-Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
-Plug 'majutsushi/tagbar'
 Plug 'ternjs/tern_for_vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -88,6 +79,7 @@ set wildignorecase
 set wildmenu
 let mapleader = ","
 let localmapleader = ","
+
 " GUI options {{{
 if has("gui_running")
   set guioptions-=T
@@ -144,36 +136,6 @@ cc
 Plug 'bagrat/vim-buffet'
 endfunction
 
-" GPG
-let g:GPGPreferArmor=1
-let g:GPGPreferSign=1
-let g:GPGDefaultRecipients=["flyinvoke@gmail.com"]
-
-augroup GPG
-  autocmd!
-  autocmd FileType gpg setlocal updatetime=12000
-  autocmd CursorHold *.\(gpg\|asc\|pgp\) quit
-augroup END
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='nord'
-let g:tagbar_type_javascript = {
-    \ 'ctagstype': 'javascript',
-    \ 'kinds': [
-    \ 'A:arrays',
-    \ 'P:properties',
-    \ 'T:tags',
-    \ 'O:objects',
-    \ 'G:generator functions',
-    \ 'F:functions',
-    \ 'C:constructors/classes',
-    \ 'M:methods',
-    \ 'V:variables',
-    \ 'I:imports',
-    \ 'E:exports',
-    \ 'S:styled components'
-    \ ]}
 let g:netrw_liststyle = 3
 let g:ale_set_highlights = 0
 let g:ale_linters = {'javascript': ['eslint']}
