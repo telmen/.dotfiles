@@ -19,7 +19,6 @@ export OpenCV_ANDROID_HOME=$ANDROID_HOME/opencv
 export PYTHON_HOME=$HOME/Library/Python/3.7/bin
 export ANDROID_BIN=$ANDROID_HOME/tools/bin/
 export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
 export APPS=$CUSTOM_BIN:$OpenCV_ANDROID_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 export YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
 export OPEN_SSL="/usr/local/opt/openssl/bin:$PATH"

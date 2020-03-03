@@ -113,7 +113,7 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <C-s> :w<CR>
-inoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> :w<CR>
 nnoremap K :tabn<CR>
 nnoremap J :tabp<CR>
