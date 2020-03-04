@@ -14,5 +14,3 @@ and not set -q TMUX
     exec tmux
   end
 end
-
-fish_vi_key_bindings

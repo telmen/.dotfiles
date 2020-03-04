@@ -147,7 +147,8 @@ let g:signify_sign_change = '┃'
 let g:signify_sign_delete = '•'
 
 let g:xcodedark_green_comments = 1
-let g:xcodedark_emph_idents = 1
+let g:xcodedark_emph_types = 0
+let g:xcodedark_emph_idents = 0
 let g:xcodedark_emph_funcs = 1
 let g:xcodedark_match_paren_style = 1
 
