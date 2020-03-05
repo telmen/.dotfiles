@@ -65,7 +65,6 @@ set nowrap
 set nowritebackup
 set number
 set omnifunc=syntaxcomplete#Complete
-set relativenumber
 set ruler
 set shiftround
 set shortmess+=c
