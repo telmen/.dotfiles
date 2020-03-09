@@ -18,9 +18,9 @@ Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'arzg/vim-colors-xcode'
 if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 Plug 'andymass/vim-matchup'
 
@@ -64,7 +64,6 @@ set novisualbell
 set nowrap
 set nowritebackup
 set number
-set omnifunc=syntaxcomplete#Complete
 set ruler
 set shiftround
 set shortmess+=c
@@ -86,13 +85,13 @@ let localmapleader = ","
 
 " GUI options {{{
 if has("gui_running")
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=m
-  set guioptions-=l
-  set guioptions-=L
-  set guitablabel=%t
+set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=m
+set guioptions-=l
+set guioptions-=L
+set guitablabel=%t
 endif
 " Commands {{{1
 command! W w !sudo tee % &>/dev/null
@@ -153,17 +152,30 @@ let g:xcodedark_match_paren_style = 1
 
 let g:signify_sign_show_count = 0 " Don’t show the number of deleted lines.
 let g:netrw_liststyle = 3
-let g:ale_set_highlights = 0
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {
-    \ 'python': ['black', 'isort'],
-    \ 'javascript': ['prettier', 'eslint'],
-    \ 'json': ['prettier'],
-    \ 'html': ['prettier'],
-    \ 'css': ['prettier'],
-    \}
-let g:ale_linters_explicit = 1
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'python': ['black', 'isort'],
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'json': ['prettier'],
+  \ 'html': ['prettier'],
+  \ 'css': ['prettier'],
+  \}
+let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '!'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+highlight ALEWarning ctermbg=DarkMagenta
+set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_tsserver_autoimport = 1
+
+
 let g:fzf_action = {
 \ 'ctrl-q': function('s:build_quickfix_list'),
 \ 'ctrl-t': 'tab split',
@@ -187,15 +199,15 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 augroup vim-colors-xcode
-    autocmd!
+  autocmd!
 augroup END
 
 autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
 autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 
 autocmd User SignifySetup
-            \ execute 'autocmd! signify' |
-            \ autocmd signify TextChanged,TextChangedI * call sy#start()
+          \ execute 'autocmd! signify' |
+          \ autocmd signify TextChanged,TextChangedI * call sy#start()
 
 " Plugin mappings {{{2
 nnoremap <silent> <Leader>C :call fzf#run({
@@ -207,19 +219,19 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \   'left':    30
 \ })<CR>
 inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 if has('patch8.1.1068')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -230,21 +242,21 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gk :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+if (index(['vim','help'], &filetype) >= 0)
+  execute 'h '.expand('<cword>')
+else
+  call CocAction('doHover')
+endif
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 augroup Coc
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd!
+" Setup formatexpr specified filetype(s).
+autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
+" Update signature help on jump placeholder.
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -292,10 +304,10 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 command! -nargs=0 Format :call CocAction('format')
 
 function! MyUniq(lst)
-    return filter(a:lst, 'count(a:lst, v:val) == 1')
+  return filter(a:lst, 'count(a:lst, v:val) == 1')
 endfunction
 command! -bang Netrwhist call fzf#run(fzf#wrap('netrw_dirhist',
-    \ {'source': 
+    \ {'source':
     \ !exists('g:netrw_dirhist_cnt')
     \   ?"tail -n +3 ".g:netrw_home.".netrwhist | cut -d \"'\" -f2- | rev | cut -d \"'\" -f2- | rev | awk '!seen[$0]++'"
     \   :MyUniq(map(range(1,g:netrw_dirhist_cnt), 'g:netrw_dirhist_{v:val}'))
