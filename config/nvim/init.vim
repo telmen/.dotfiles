@@ -23,6 +23,7 @@ else
 Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 Plug 'andymass/vim-matchup'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -39,6 +40,7 @@ hi Visual cterm=NONE ctermfg=black ctermbg=grey
 hi ExtraWhitespace guibg=#bd5353 ctermbg=131
 
 " Options {{{1
+set conceallevel=3
 set ai
 set autoread
 set backspace=indent,eol,start
@@ -126,18 +128,23 @@ vnoremap & :s<CR>
 noremap H ^
 noremap L g_
 vnoremap <C-c> "+ygv"*y
-nnoremap <C-t> :tabnew<cr>
+nnoremap <C-t> :tabnew split<cr>
 nnoremap <RightMouse> "+]p
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 nnoremap Q :qa!<cr>
 
 " Plugin Options  {{{1
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
+autocmd FileType nerdtree setlocal nolist
+
 function! s:build_quickfix_list(lines)
 call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
 copen
 cc
-Plug 'bagrat/vim-buffet'
 endfunction
 
 let g:signify_sign_add    = '┃'
@@ -210,6 +217,16 @@ autocmd User SignifySetup
           \ autocmd signify TextChanged,TextChangedI * call sy#start()
 
 " Plugin mappings {{{2
+nmap <leader>1 <Plug>BuffetSwitch(1)
+nmap <leader>2 <Plug>BuffetSwitch(2)
+nmap <leader>3 <Plug>BuffetSwitch(3)
+nmap <leader>4 <Plug>BuffetSwitch(4)
+nmap <leader>5 <Plug>BuffetSwitch(5)
+nmap <leader>6 <Plug>BuffetSwitch(6)
+nmap <leader>7 <Plug>BuffetSwitch(7)
+nmap <leader>8 <Plug>BuffetSwitch(8)
+nmap <leader>9 <Plug>BuffetSwitch(9)
+nmap <leader>0 <Plug>BuffetSwitch(10)
 nnoremap <silent> <Leader>C :call fzf#run({
 \   'source':
 \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -283,6 +300,12 @@ nnoremap <Leader>f :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nmap <F6> <Plug>(ale_fix)
 noremap <F5> :NERDTreeToggleVCS<CR>
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+" let NERDTreeQuitOnOpen = 1
+" let NERDTreeAutoDeleteBuffer = 1
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 nnoremap <silent> <Leader>s :call fzf#run({
 \   'down': '40%',
 \   'sink': 'botright split' })<CR>
