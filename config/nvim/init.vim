@@ -332,7 +332,7 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-colo xcodedark
+colo xcodedarkhc
 
 " Leaders {{{1
 inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
