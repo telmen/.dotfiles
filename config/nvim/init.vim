@@ -111,16 +111,16 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 vnoremap <C-s> :w<CR>
-nnoremap K :tabn<CR>
-nnoremap J :tabp<CR>
+noremap K :tabn<CR>
+noremap J :tabp<CR>
+map [b :bprevious<CR>
+map ]b :bnext<CR>
 nnoremap <Leader>/ :noh<CR>
 nnoremap <Leader>` :b#<CR>
 noremap <Leader>n :set number!<CR>
 noremap <Leader>w :bd<CR>
 nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
-map [b :bprevious<CR>
-map ]b :bnext<CR>
 inoremap <C-y> <Esc>:sil exe ".!which <cWORD>" <bar> s/^/#!/ <bar> filetype detect<cr>YpDi
 vnoremap & :s<CR>
 noremap H ^
