@@ -1,7 +1,10 @@
 #compdef
 
 alias rm='rm -i'
-alias o=open
+function openFn
+  command -v open >/dev/null 2>&1 && open $argv || xdg-open $argv
+end
+alias o=openFn
 
 # React native
 
