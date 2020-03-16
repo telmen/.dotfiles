@@ -1,5 +1,5 @@
 set -gx GPG_TTY 'tty'
-set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden --no-ignore-vcs -g !node_modules -g !.git'
+set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden -g !.git'
 set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
 set LINUX_BREW $HOME/.linuxbrew/bin
 export EDITOR=nvim

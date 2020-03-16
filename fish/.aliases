@@ -1,5 +1,13 @@
 #compdef
 
+alias ide=ideFn
+
+function ideFn
+  tmux split-window -v -p 30
+  tmux split-window -h -p 66
+  tmux split-window -h -p 50
+end
+
 alias rm='rm -i'
 function openFn
   command -v open >/dev/null 2>&1 && open $argv || xdg-open $argv

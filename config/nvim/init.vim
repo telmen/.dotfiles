@@ -1,8 +1,12 @@
 " Plugins  {{{1
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+Plug 'ap/vim-css-color'
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
@@ -17,13 +21,10 @@ Plug 'tpope/vim-sensible'
 Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim'
 Plug 'arzg/vim-colors-xcode'
-if has('nvim') || has('patch-8.0.902')
-Plug 'mhinz/vim-signify'
-else
-Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-endif
 Plug 'andymass/vim-matchup'
-Plug 'ryanoasis/vim-devicons'
+Plug 'liuchengxu/eleline.vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -101,6 +102,26 @@ command! Vimr source ~/.config/nvim/init.vim
 command! Vime e ~/.config/nvim/init.vim
 
 " Mappings {{{1
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <C-b> :Explore<CR>
+nmap <Space> <C-w>w
+nmap ss :split<CR><C-w>w
+nmap sv :vsplit<CR><C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+map so <C-w>o
+map sc <C-w>c
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
 nnoremap k gk
 nnoremap j gj
 nnoremap gp `[v`]
@@ -135,11 +156,15 @@ inoremap <C-w> <C-g>u<C-w>
 nnoremap Q :qa!<cr>
 
 " Plugin Options  {{{1
-
+let g:eleline_powerline_fonts = 1
+let g:eleline_slim = 1
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ }
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
-autocmd FileType nerdtree setlocal nolist
 
 function! s:build_quickfix_list(lines)
 call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -147,17 +172,12 @@ copen
 cc
 endfunction
 
-let g:signify_sign_add    = '┃'
-let g:signify_sign_change = '┃'
-let g:signify_sign_delete = '•'
-
 let g:xcodedark_green_comments = 1
 let g:xcodedark_emph_types = 0
 let g:xcodedark_emph_idents = 0
 let g:xcodedark_emph_funcs = 1
 let g:xcodedark_match_paren_style = 1
 
-let g:signify_sign_show_count = 0 " Don’t show the number of deleted lines.
 let g:netrw_liststyle = 3
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {
@@ -211,10 +231,6 @@ augroup END
 
 autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
 autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
-
-autocmd User SignifySetup
-          \ execute 'autocmd! signify' |
-          \ autocmd signify TextChanged,TextChangedI * call sy#start()
 
 " Plugin mappings {{{2
 nmap <leader>1 <Plug>BuffetSwitch(1)
@@ -301,7 +317,7 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'tabedit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'edit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
@@ -325,13 +341,6 @@ nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nmap <F6> <Plug>(ale_fix)
-noremap <F5> :NERDTreeToggleVCS<CR>
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-" let NERDTreeQuitOnOpen = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
 nnoremap <silent> <Leader>s :call fzf#run({
 \   'down': '40%',
 \   'sink': 'botright split' })<CR>
@@ -365,8 +374,6 @@ command! -bang Netrwhist call fzf#run(fzf#wrap('netrw_dirhist',
 command! -bang -complete=dir -nargs=* LS
     \ call fzf#run(fzf#wrap('ls', {'source': 'ls', 'dir': <q-args>}, <bang>0))
 
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 function! s:buflist()
   redir => ls
   silent ls
@@ -380,6 +387,17 @@ endfunction
 
 colo xcodedarkhc
 
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " Leaders {{{1
 inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
 inoremap <leader>D <C-r>=strftime('%D')<cr>
