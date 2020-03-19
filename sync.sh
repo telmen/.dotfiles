@@ -1,44 +1,109 @@
 #!/bin/bash
 
-function dotfiles() {
-  # Fix me
-  find . -type f -name '.*' -printf '%f\n' | while read f; do
-    ln -sfvnr $f ~
-  done
-  if [[ -d ~/.config/fish ]]; then
-    echo "~/.config/fish already exists... Skipping."
-  else
-    ln -sfvnr fish ~/.config/fish
-    echo "Done"
-  fi
+print_question() {
+  # Print output in yellow
+  printf "\e[0;33m  [?] $1\e[0m"
 }
 
-function configs() {
-  config_files=$( find "$(pwd)/config" -maxdepth 1 2>/dev/null )
-  for config in $config_files; do
-    target="$HOME/.config/$( basename "$config" )"
-    if [ -e "$target" ]; then
-      echo "~${target#$HOME} already exists... Skipping."
+print_success() {
+  # Print output in green
+  printf "\e[0;32m  [✔] $1\e[0m\n"
+}
+
+print_error() {
+  # Print output in red
+  printf "\e[0;31m  [✖] $1 $2\e[0m\n"
+}
+
+print_info() {
+  # Print output in purple
+  printf "\n\e[0;35m $1\e[0m\n\n"
+}
+
+print_result() {
+  [ $1 -eq 0 ] \
+    && print_success "$2" \
+    || print_error "$2"
+
+  [ "$3" == "true" ] && [ $1 -ne 0 ] \
+    && exit
+}
+
+execute() {
+  $1 &> /dev/null
+  print_result $? "${2:-$1}"
+}
+
+ask_for_confirmation() {
+  print_question "$1 (y/n) "
+  read -n 1
+  printf "\n"
+}
+
+answer_is_yes() {
+  [[ "$REPLY"  =~ ^[Yy]$ ]] \
+    && return 0 \
+    || return 1
+}
+
+dotfiles() {
+  # Find all . files in this folder
+  files_to_symlink=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
+  files_to_symlink="$files_to_symlink .config/fish"
+  local i=""
+  local sourceFile=""
+  local targetFile=""
+
+  for i in ${files_to_symlink[@]}; do
+    sourceFile="$(pwd)/$i"
+    targetFile="$HOME/$(printf "%s" "$i")"
+
+    if [ -e "$targetFile" ]; then
+      if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
+        ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+        if answer_is_yes; then
+          rm -rf "$targetFile"
+          execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+        else
+          print_error "$targetFile → $sourceFile"
+        fi
+      else
+        print_success "$targetFile → $sourceFile"
+      fi
     else
-      echo "Creating symlink for $config"
-      ln -s "$config" "$target"
+      execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
     fi
   done
 }
 
-read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo -e "\\n"
-  read -p "Sync dotfiles?" -n 1
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
+configs() {
+  config_files=$( find "$(pwd)/config" -maxdepth 1 -mindepth 1 2>/dev/null )
+  for sourceFile in $config_files; do
+    targetFile="$HOME/.config/$( basename "$sourceFile" )"
+    if [ -e "$targetFile" ]; then
+      if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
+        print_info "~${targetFile#$HOME} already exists... Skipping."
+        print_error "$targetFile → $sourceFile"
+      else
+        print_success "$targetFile → $sourceFile"
+      fi
+    else
+      print_info "Creating symlink for $sourceFile"
+      execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+    fi
+  done
+}
+
+ask_for_confirmation "This may overwrite existing files in your home directory. Are you sure?"
+if answer_is_yes; then
+  ask_for_confirmation "Sync dotfiles?"
+  if answer_is_yes; then
     dotfiles
   fi
-  echo -e "\\n"
-  read -p "Sync configs?" -n 1
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    configs
+  ask_for_confirmation "Sync configs?"
+  if answer_is_yes; then
+   configs
   fi
-  echo -e "\\n"
 fi
 
 unset dotfiles

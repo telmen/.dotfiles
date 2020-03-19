@@ -1,20 +1,5 @@
 #!/bin/bash
 
-function install_fisher() {
-  if command -v fisher >/dev/null 2>&1; then
-    echo >&2 "fisher already installed"
-    return
-  fi
-  if ! command -v fish >/dev/null 2>&1; then
-    echo >&2 "fish not installed"
-    exit 1
-  fi
-  curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-  fish
-  fisher
-  . ~/.config/fish/config.fish
-}
-
 # only macOS specific installs
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo -e "\\n\\nRunning on macOS"
@@ -49,8 +34,5 @@ bash n lts
 # set fish as default shell
 echo "Setting fish shell as default one"
 chsh -s $(which fish)
-
-echo "Installing fish package manager - fisher"
-install_fisher
 
 echo "Done. Reload your terminal."

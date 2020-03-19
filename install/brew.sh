@@ -8,207 +8,68 @@ BREW_PREFIX=$(brew --prefix)
 brew install coreutils
 brew install moreutils
 brew install findutils
+brew install gnu-sed --with-default-names
 
 # Do some cleaning
 
 brew install \
-  ack \
-  adns \
-  aom \
   applesimutils \
-  apr \
-  apr-util \
-  argon2 \
-  arp-scan \
-  aspell \
   autoconf \
   automake \
   bat \
-  bfg \
-  binutils \
-  binwalk \
-  brotli \
-  c-ares \
-  cairo \
-  cifer \
   cmake \
   cocoapods \
   curl-openssl \
   dex2jar \
   diff-so-fancy \
   dive \
-  dns2tcp \
-  elixir \
   exercism \
-  fcrackzip \
-  ffmpeg \
-  flac \
-  fontconfig \
-  foremost \
-  freetds \
-  freetype \
-  frei0r \
-  fribidi \
-  fzf \
   gcc \
-  gdbm \
-  gettext \
-  giflib \
   git \
   git-extras \
   git-lfs \
   git-standup \
-  gitlab-runner \
-  glib \
-  gmp \
   gnu-sed \
   gnupg \
   gnutls \
-  graphite2 \
-  grep \
-  harfbuzz \
-  hashpump \
   highlight \
   htop \
   httpie \
   hub \
-  hydra \
-  icu4c \
-  ilmbase \
   imagemagick \
-  isl \
-  jansson \
-  jasper \
-  jemalloc \
-  john \
-  jpeg \
   jq \
-  jump \
-  knock \
-  lame \
-  ldns \
-  leptonica \
-  libass \
-  libassuan \
-  libbluray \
-  libde265 \
-  libdnet \
-  libdvdcss \
-  libev \
-  libevent \
-  libffi \
-  libgcrypt \
-  libgpg-error \
-  libheif \
-  libidn \
-  libidn2 \
-  libksba \
-  libmetalink \
-  libmpc \
-  libogg \
-  libomp \
-  libpcap \
-  libpng \
-  libpq \
-  libsamplerate \
-  libsndfile \
-  libsodium \
-  libsoxr \
-  libssh2 \
-  libtasn1 \
-  libtiff \
-  libtool \
-  libunistring \
-  libusb \
-  libvorbis \
-  libvpx \
-  libyaml \
-  libzip \
-  little-cms2 \
-  lua \
-  lynx \
-  mpfr \
-  ncurses \
-  netpbm \
-  nettle \
-  nghttp2 \
-  ninja \
   nmap \
   node \
-  npth \
-  oniguruma \
-  opencore-amr \
-  openexr \
-  openjpeg \
-  openldap \
-  openssh \
   openssl \
-  opus \
-  p11-kit \
-  p7zip \
-  pango \
-  pcre \
-  pcre2 \
-  perl \
-  pigz \
-  pinentry \
-  pixman \
-  pkg-config \
-  pngcheck \
-  powerlevel9k \
-  pv \
   python \
-  python@2 \
-  qt \
   readline \
   rename \
   ripgrep \
-  rlwrap \
-  rtmpdump \
-  rubberband \
   ruby \
-  screen \
-  sdl2 \
-  sfnt2woff \
-  sfnt2woff-zopfli \
-  shared-mime-info \
-  shfmt \
-  snappy \
-  socat \
-  speex \
-  sphinx-doc \
   sqlite \
-  sqlmap \
-  ssdeep \
   ssh-copy-id \
-  tcpflow \
-  tcpreplay \
-  tcptrace \
-  tesseract \
-  theora \
-  tidy-html5 \
   tmux \
   tree \
-  ucspi-tcp \
-  unbound \
-  unixodbc \
-  vbindiff \
   watchman \
-  webp \
   wget \
   wifi-password \
-  woff2 \
-  wxmac \
-  x264 \
-  x265 \
-  xpdf \
-  xvid \
-  xz \
   yarn \
-  zopfli \
   fish \
   neovim \
   git-flow
+
+brew install homebrew/dupes/nano
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/openssh
+brew install z
+brew install entr
+brew install the_silver_searcher
+brew install fzf
+brew install pv
+brew install terminal-notifier
+brew install android-platform-tools
+brew install pidcat
+brew install ncdu
 
 # brew casks
 
@@ -220,7 +81,6 @@ brew cask install \
   fing \
   qlmarkdown \
   react-native-debugger \
-  font-hack-nerd-font \
   qlstephen \
   reactotron \
   kap \
@@ -228,6 +88,19 @@ brew cask install \
   suspicious-package \
   qlcolorcode \
   quicklook-json \
-  webpquicklook
+  webpquicklook \
+  rectangle \
+  gyazo \
+  sublime-text \
+  imageoptim \
+  imagealpha \
+  firefox \
+  google-chrome \
+  spotify \
+  gpgtools
+
+brew tap homebrew/cask-fonts
+
+brew cask install font-fira-code
 
 brew cleanup

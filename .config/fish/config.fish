@@ -1,11 +1,11 @@
 if test -e (dirname (status -f))/.exports
-  . (dirname (status -f))/.exports
+  source (dirname (status -f))/.exports
 end
 if test -e (dirname (status -f))/.aliases
-  . (dirname (status -f))/.aliases
+  source (dirname (status -f))/.aliases
 end
 if test -e (dirname (status -f))/.fns
-  . (dirname (status -f))/.fns
+  source (dirname (status -f))/.fns
 end
 
 if status is-interactive
