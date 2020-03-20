@@ -311,11 +311,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'sink': 'edit', 'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
@@ -338,7 +333,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 nnoremap <C-p> :Files<CR>
-nnoremap <Leader>f :Rg<CR>
+nnoremap <Leader>f :RG<CR>
 nnoremap <Leader>b :Buffers<CR>
 nmap <F6> <Plug>(ale_fix)
 nnoremap <silent> <Leader>s :call fzf#run({
