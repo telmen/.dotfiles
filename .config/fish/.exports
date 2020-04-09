@@ -1,27 +1,28 @@
 set -gx GPG_TTY (tty)
-set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
-set LINUX_BREW $HOME/.linuxbrew/bin
 set -gx EDITOR vim
-export CUSTOM_BIN=$HOME/bin
-export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin
-export MANPATH="/usr/local/man:$MANPATH"
-export MANPAGER='less -X'
-export LANG=en_US.UTF-8
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export REACT_EDITOR=vim
-export LC_CTYPE=en_US.UTF-8
-export G_ENABLE_DIAGNOSTIC=1
-export GTK_THEME=Adwaita:dark
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-andcamera
-export OpenCV_ANDROID_HOME=$ANDROID_HOME/opencv
-export PYTHON_HOME=$HOME/Library/Python/3.7/bin
-export ANDROID_BIN=$ANDROID_HOME/tools/bin/
-export CLICOLOR=1
-export APPS=$CUSTOM_BIN:$OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
-export YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
-export OPEN_SSL="/usr/local/opt/openssl/bin:$PATH"
-export RUBY="/usr/local/opt/ruby/bin"
-export RVM="$HOME/.rvm/bin"
-export PATH="$PATH:$LINUX_BREW:$LINUX_BREW_ALTERNATE:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS"
+
+set -gx CLICOLOR 1
+set -gx LSCOLORS ExFxBxDxCxegedabagacad
+set -gx LANG en_US.UTF-8
+
+set -gx CUSTOM_BIN $HOME/bin
+set -gx RUBY_GEM /usr/lib/ruby/gems/2.3.0/bin
+set -gx MANPATH "/usr/local/man:$MANPATH"
+set -gx MANPAGER 'less -X'
+set -gx SSH_KEY_PATH "~/.ssh/rsa_id"
+set -gx REACT_EDITOR vim
+set -gx LC_CTYPE en_US.UTF-8
+set -gx G_ENABLE_DIAGNOSTIC 1
+set -gx GTK_THEME Adwaita:dark
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+set -gx ANDROID_NDK_HOME $ANDROID_HOME/ndk-andcamera
+set -gx OpenCV_ANDROID_HOME $ANDROID_HOME/opencv
+set -gx PYTHON_HOME $HOME/Library/Python/3.7/bin
+set -gx ANDROID_BIN $ANDROID_HOME/tools/bin/
+set -gx APPS $CUSTOM_BIN:$OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+set -gx YARN "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
+set -gx OPEN_SSL "/usr/local/opt/openssl/bin:$PATH"
+set -gx RUBY "/usr/local/opt/ruby/bin"
+set -gx RVM "$HOME/.rvm/bin"
+set -gx PATH "$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS"

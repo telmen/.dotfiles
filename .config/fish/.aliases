@@ -1,33 +1,24 @@
 #compdef
 
-alias rm='rm -i'
-function openFn
-  command -v open >/dev/null 2>&1 && open $argv || xdg-open $argv
-end
-alias o=openFn
-
 # React native
 
-alias rn="react-native"
-alias rns="react-native start"
-alias rna="react-native run-android"
-alias rni="react-native run-ios"
-alias d="instruments -s devices"
-alias ad="adb devices"
+abbr rn 'react-native'
+abbr rns 'react-native start'
+abbr rna 'react-native run-android'
+abbr rni 'react-native run-ios'
 
-alias c+x="chmod +x"
+# iOS devices
+
+abbr d 'instruments -s devices'
+
+# Android devices
+
+abbr ad 'adb devices'
+
+abbr c+x 'chmod +x'
 
 # Shortcuts
-alias g="git"
-
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1 # GNU `ls`
-	set colorflag --color
-	export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-else # macOS `ls`
-	set colorflag -G
-	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-end
+abbr g 'git'
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -72,9 +63,6 @@ set jscbin "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resou
 [ -e "$jscbin" ] && alias jsc="$jscbin";
 set -e jscbin
 
-# Trim new lines and copy to clipboard
-# alias c="tr -d '\n' | pbcopy"
-
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
@@ -106,9 +94,6 @@ alias spoton="sudo mdutil -a -i on"
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"
 
-# Airport CLI alias
-alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
@@ -127,21 +112,67 @@ alias pumpitup="osascript -e 'set volume output volume 100'"
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
-alias path='echo -e $PATH//:/\\n'
+alias path='echo -e $PATH/\\n'
 
-abbr ll "exa --group-directories-first -Bhl"
-abbr ls "exa"
+abbr ll 'exa --group-directories-first -Bhl'
+abbr ls 'exa'
 abbr v vim
-abbr vip "$EDITOR +PlugInstall +qall"
-abbr vup "$EDITOR +PlugUpdate"
-abbr vcp "$EDITOR +PlugClean +qall"
-abbr fz "source ~/.config/fish/config.fish"
-abbr ff "$EDITOR ~/.config/fish/config.fish"
-abbr gg "$EDITOR ~/.gitconfig"
+abbr vip '$EDITOR +PlugInstall +qall'
+abbr vup '$EDITOR +PlugUpdate'
+abbr vcp '$EDITOR +PlugClean +qall'
+abbr fz 'source ~/.config/fish/config.fish'
+abbr ff '$EDITOR ~/.config/fish/config.fish'
+abbr gg '$EDITOR ~/.gitconfig'
+abbr cc '$EDITOR ~/Library/Application\ Support/Code/User/settings.json'
+abbr c 'code .'
+abbr copy 'pbcopy'
+abbr paste 'pbpaste'
+abbr rm 'rm -i'
+abbr o 'open .'
+abbr b 'open -a "Google Chrome"'
+
+function md
+  mkdir -p -- "$argv"
+  cd -- "$argv"
+end
+
+function dev
+  cd "$HOME/dev/$argv"
+end
+
+function fork
+  cd "$HOME/fork/$argv"
+end
+
+function work
+  cd "$HOME/work/$argv"
+end
+
+function 0x0
+  curl -F "file=@$argv" https://0x0.st
+end
+
+function ptoi
+  sips -s format icns $argv --out $argv.icns
+end
+
+function pgb
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+end
+
+function fish_prompt
+  set -l branch (pgb)
+  if test -z "$branch"
+    set branch ""
+  else
+    set branch " ($branch)"
+  end
+  set -l dir (basename $PWD)
+  echo -sn "▲ "
+  echo -sn "$dir"
+  echo -sn "$branch: "
+end
