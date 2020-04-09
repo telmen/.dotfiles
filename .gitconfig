@@ -1,75 +1,70 @@
-# This is Git's per-user configuration file.
 [alias]
-logn = log --no-merges
-forget = checkout .
-uncommit = reset HEAD~
-fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
-praise = blame
-overview = log --all --since='2 weeks' --oneline --no-merges
-me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
-clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
-graph = log --graph --all --decorate --stat --date=iso
-unstage = reset --
+  logn = log --no-merges
+  forget = checkout .
+  uncommit = reset HEAD~
+  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+  praise = blame
+  overview = log --all --since='2 weeks' --oneline --no-merges
+  me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
+  clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
+  graph = log --graph --all --decorate --stat --date=iso
+  unstage = reset --
 [user]
-name = telmen
-email = flyinvoke@gmail.com
-signingKey = 2D3B964912A6D8DB
+  name = telmen
+  email = flyinvoke@gmail.com
+  signingKey = 2D3B964912A6D8DB
 [core]
-editor = nvim
-autocrlf = input
-pager = diff-so-fancy | less --tabs=2 -SRFX
-trustctime = false
-[color]
-ui = true
-[color "diff-highlight"]
-oldNormal = red bold
-oldHighlight = white bold 124
-newNormal = green bold
-newHighlight = white bold 65
+  editor = nvim
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=2 -SRFX
+  trustctime = false
+[color "branch"]
+  current = yellow
+  local = yellow
+  remote = green
 [color "diff"]
-meta = 214 bold
-frag = magenta bold
-commit = 214 bold
-old = red bold
-new = green bold
-whitespace = red reverse
-[color "commit"]
-meta = magenta
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+[color "status"]
+  added = green
+  changed = red
+  untracked = normal
 [diff]
-tool = meld
+  tool = vimdiff
 [difftool]
-prompt = false
-[difftool "meld"]
-trustExitCode = true
-cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+  prompt = false
 [push]
-default = tracking
+  default = current
 [branch]
-autosetuprebase = always
+  autosetuprebase = always
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [commit]
-gpgsign = true
-verbose = true
+  gpgsign = true
+  verbose = true
 [gpg]
-program = gpg
+  program = gpg
 [rebase]
-autoStash = true
+  autoStash = true
 [merge]
-ff = no
-commit = no
-tool = meld
-[mergetool]
-prompt = false
-[mergetool "meld"]
-trustExitCode = true
-cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+  ff = no
+  commit = no
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  prompt = false
+  keepBackup = false
 [format]
-pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+  pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
 [log]
-date = auto:human
+  date = auto:human
 [changelog]
-format = * %s by %an
+  format = * %s by %an
+[tag]
+  gpgsign = true

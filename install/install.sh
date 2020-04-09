@@ -17,8 +17,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   . $(pwd -P)/macos.sh
 elif [[ "$OSTYPE" == "linux"* ]]; then
-  echo -e "\\n\\nRunning on Linux"
-  . $(pwd -P)/ubuntu.sh
+  printf "\e[0;31m  [✖] $1\e[0m\n"
+  exit 1
 fi
 
 echo "Installing common programs"

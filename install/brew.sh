@@ -48,14 +48,11 @@ brew install \
   ruby \
   sqlite \
   ssh-copy-id \
-  tmux \
-  tree \
   watchman \
   wget \
   wifi-password \
   yarn \
   fish \
-  neovim \
   git-flow
 
 brew install homebrew/dupes/nano
@@ -101,6 +98,6 @@ brew cask install \
 
 brew tap homebrew/cask-fonts
 
-brew cask install font-fira-code
+brew cask install font-jetbrains-mono font-source-code-pro
 
 brew cleanup

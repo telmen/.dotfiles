@@ -1,3 +1,7 @@
+## SETTINGS
+set fish_greeting
+set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden -g !.git'
+
 if test -e (dirname (status -f))/.exports
   source (dirname (status -f))/.exports
 end
@@ -6,11 +10,4 @@ if test -e (dirname (status -f))/.aliases
 end
 if test -e (dirname (status -f))/.fns
   source (dirname (status -f))/.fns
-end
-
-if status is-interactive
-and not set -q TMUX
-  if type -q tmux
-    exec tmux
-  end
 end

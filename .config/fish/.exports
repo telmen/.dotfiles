@@ -1,8 +1,7 @@
-set -gx GPG_TTY 'tty'
-set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden -g !.git'
+set -gx GPG_TTY (tty)
 set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
 set LINUX_BREW $HOME/.linuxbrew/bin
-export EDITOR=nvim
+set -gx EDITOR nvim
 export CUSTOM_BIN=$HOME/bin
 export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin
 export MANPATH="/usr/local/man:$MANPATH"
@@ -15,11 +14,12 @@ export G_ENABLE_DIAGNOSTIC=1
 export GTK_THEME=Adwaita:dark
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-andcamera
 export OpenCV_ANDROID_HOME=$ANDROID_HOME/opencv
 export PYTHON_HOME=$HOME/Library/Python/3.7/bin
 export ANDROID_BIN=$ANDROID_HOME/tools/bin/
 export CLICOLOR=1
-export APPS=$CUSTOM_BIN:$OpenCV_ANDROID_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+export APPS=$CUSTOM_BIN:$OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 export YARN="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
 export OPEN_SSL="/usr/local/opt/openssl/bin:$PATH"
 export RUBY="/usr/local/opt/ruby/bin"

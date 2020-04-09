@@ -1,13 +1,5 @@
 #compdef
 
-alias ide=ideFn
-
-function ideFn
-  tmux split-window -v -p 30
-  tmux split-window -h -p 66
-  tmux split-window -h -p 50
-end
-
 alias rm='rm -i'
 function openFn
   command -v open >/dev/null 2>&1 && open $argv || xdg-open $argv
@@ -41,18 +33,6 @@ else # macOS `ls`
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 end
 
-# List all files colorized in long format
-alias l="ls -lF $colorflag"
-
-# List all files colorized in long format, excluding . and ..
-alias la="ls -lAF $colorflag"
-
-# List only directories
-alias lsd="ls -lF $colorflag | grep --color=never '^d'"
-
-# Always use color output for `ls`
-alias ls="command ls $colorflag"
-
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
@@ -67,10 +47,6 @@ alias week='date +%V'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
-
-# Google Chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -164,12 +140,14 @@ alias reload="exec $SHELL -l"
 # Print each PATH entry on a separate line
 alias path='echo -e $PATH//:/\\n'
 
-alias ll="exa --group-directories-first -Bhl"
-alias ls="exa"
-alias v=vimFn
-alias vim=vimFn
-alias f='source ~/.config/fish/config.fish'
-alias vconf='v ~/.config/nvim/init.vim'
-alias fconf='v ~/.config/fish/config.fish'
-alias kconf='v ~/.config/kitty/kitty.conf'
-alias tconf='v ~/.tmux.conf'
+abbr ll "exa --group-directories-first -Bhl"
+abbr ls "exa"
+abbr v vimFn
+abbr vim vimFn
+abbr vip "$EDITOR +PlugInstall +qall"
+abbr vup "$EDITOR +PlugUpdate"
+abbr vcp "$EDITOR +PlugClean +qall"
+abbr fz "source ~/.config/fish/config.fish"
+abbr vv "$EDITOR ~/.config/nvim/init.vim"
+abbr ff "$EDITOR ~/.config/fish/config.fish"
+abbr gg "$EDITOR ~/.gitconfig"

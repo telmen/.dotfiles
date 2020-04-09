@@ -49,7 +49,7 @@ answer_is_yes() {
 dotfiles() {
   # Find all . files in this folder
   files_to_symlink=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
-  files_to_symlink="$files_to_symlink .config/fish"
+  files_to_symlink="$files_to_symlink .config/fish .config/nvim"
   local i=""
   local sourceFile=""
   local targetFile=""
@@ -76,35 +76,12 @@ dotfiles() {
   done
 }
 
-configs() {
-  config_files=$( find "$(pwd)/config" -maxdepth 1 -mindepth 1 2>/dev/null )
-  for sourceFile in $config_files; do
-    targetFile="$HOME/.config/$( basename "$sourceFile" )"
-    if [ -e "$targetFile" ]; then
-      if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
-        print_info "~${targetFile#$HOME} already exists... Skipping."
-        print_error "$targetFile → $sourceFile"
-      else
-        print_success "$targetFile → $sourceFile"
-      fi
-    else
-      print_info "Creating symlink for $sourceFile"
-      execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
-    fi
-  done
-}
-
 ask_for_confirmation "This may overwrite existing files in your home directory. Are you sure?"
 if answer_is_yes; then
   ask_for_confirmation "Sync dotfiles?"
   if answer_is_yes; then
     dotfiles
   fi
-  ask_for_confirmation "Sync configs?"
-  if answer_is_yes; then
-   configs
-  fi
 fi
 
 unset dotfiles
-unset configs

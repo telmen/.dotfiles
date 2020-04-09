@@ -4,5 +4,5 @@
 .config/fish/conf.d
 .config/fish/completions
 .config/fish/fish_variables
-config/nvim/.netrwhist
+.config/nvim/.netrwhist
 *.swp
