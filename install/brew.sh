@@ -53,7 +53,8 @@ brew install \
   wifi-password \
   yarn \
   fish \
-  git-flow
+  git-flow \
+  vim
 
 brew install homebrew/dupes/nano
 brew install homebrew/dupes/grep

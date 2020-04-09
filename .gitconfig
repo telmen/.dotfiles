@@ -14,7 +14,7 @@
   email = flyinvoke@gmail.com
   signingKey = 2D3B964912A6D8DB
 [core]
-  editor = nvim
+  editor = vim
   autocrlf = input
   pager = diff-so-fancy | less --tabs=2 -SRFX
   trustctime = false
@@ -57,7 +57,7 @@
   tool = vimdiff
   conflictstyle = diff3
 [mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
   prompt = false
   keepBackup = false
 [format]

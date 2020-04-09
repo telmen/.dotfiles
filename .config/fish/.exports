@@ -1,7 +1,7 @@
 set -gx GPG_TTY (tty)
 set LINUX_BREW_ALTERNATE /home/linuxbrew/.linuxbrew/bin
 set LINUX_BREW $HOME/.linuxbrew/bin
-set -gx EDITOR nvim
+set -gx EDITOR vim
 export CUSTOM_BIN=$HOME/bin
 export RUBY_GEM=/usr/lib/ruby/gems/2.3.0/bin
 export MANPATH="/usr/local/man:$MANPATH"

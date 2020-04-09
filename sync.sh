@@ -49,7 +49,7 @@ answer_is_yes() {
 dotfiles() {
   # Find all . files in this folder
   files_to_symlink=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
-  files_to_symlink="$files_to_symlink .config/fish .config/nvim"
+  files_to_symlink="$files_to_symlink .config/fish"
   local i=""
   local sourceFile=""
   local targetFile=""

@@ -15,10 +15,6 @@ alias rni="react-native run-ios"
 alias d="instruments -s devices"
 alias ad="adb devices"
 
-function vimFn
-  command -v nvim >/dev/null 2>&1 && nvim $argv || /usr/bin/vim $argv
-end
-
 alias c+x="chmod +x"
 
 # Shortcuts
@@ -142,12 +138,10 @@ alias path='echo -e $PATH//:/\\n'
 
 abbr ll "exa --group-directories-first -Bhl"
 abbr ls "exa"
-abbr v vimFn
-abbr vim vimFn
+abbr v vim
 abbr vip "$EDITOR +PlugInstall +qall"
 abbr vup "$EDITOR +PlugUpdate"
 abbr vcp "$EDITOR +PlugClean +qall"
 abbr fz "source ~/.config/fish/config.fish"
-abbr vv "$EDITOR ~/.config/nvim/init.vim"
 abbr ff "$EDITOR ~/.config/fish/config.fish"
 abbr gg "$EDITOR ~/.gitconfig"
