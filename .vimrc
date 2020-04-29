@@ -47,7 +47,6 @@ set updatetime=100
 set wildcharm=<C-z>
 set wildignorecase
 set wildmenu
-set clipboard=unnamedplus
 set nolist
 nnoremap <SPACE> <Nop>
 let mapleader = " "

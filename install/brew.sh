@@ -21,7 +21,6 @@ brew install \
   cocoapods \
   curl-openssl \
   dex2jar \
-  diff-so-fancy \
   dive \
   exercism \
   gcc \
@@ -55,7 +54,8 @@ brew install \
   fish \
   git-flow \
   vim \
-  xctool
+  xctool \
+  git-delta
 
 brew install homebrew/dupes/nano
 brew install homebrew/dupes/grep

@@ -16,21 +16,10 @@
 [core]
   editor = vim
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=2 -SRFX
+  pager = delta --theme='GitHub'
   trustctime = false
-[color "branch"]
-  current = yellow
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow
-  frag = magenta
-  old = red
-  new = green
-[color "status"]
-  added = green
-  changed = red
-  untracked = normal
+[interactive]
+  diffFilter = delta --color-only
 [diff]
   tool = vimdiff
 [difftool]
