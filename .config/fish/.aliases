@@ -14,6 +14,7 @@ abbr d 'instruments -s devices'
 # Android devices
 
 abbr ad 'adb devices'
+abbr adnetwork 'adb shell settings put global airplane_mode_on 1 && adb shell settings put global airplane_mode_on 0'
 
 abbr c+x 'chmod +x'
 

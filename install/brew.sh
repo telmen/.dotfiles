@@ -54,7 +54,8 @@ brew install \
   yarn \
   fish \
   git-flow \
-  vim
+  vim \
+  xctool
 
 brew install homebrew/dupes/nano
 brew install homebrew/dupes/grep
