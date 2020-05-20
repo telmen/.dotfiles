@@ -6,6 +6,7 @@ set -gx LSCOLORS ExFxBxDxCxegedabagacad
 set -gx LANG en_US.UTF-8
 set -gx BAT_THEME "GitHub"
 
+set -gx NPM_CONFIG_PREFIX ~/.npm-global
 set -gx CUSTOM_BIN $HOME/bin
 set -gx RUBY_GEM /usr/lib/ruby/gems/2.3.0/bin
 set -gx MANPATH "/usr/local/man:$MANPATH"
@@ -26,4 +27,4 @@ set -gx YARN "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/
 set -gx OPEN_SSL "/usr/local/opt/openssl/bin:$PATH"
 set -gx RUBY "/usr/local/opt/ruby/bin"
 set -gx RVM "$HOME/.rvm/bin"
-set -gx PATH "$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS"
+set -gx PATH "$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS:$NPM_CONFIG_PREFIX/bin"

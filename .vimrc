@@ -10,7 +10,6 @@ set conceallevel=3
 set ai
 set autoread
 set backspace=indent,eol,start
-set clipboard=unnamedplus
 set cmdheight=2
 set encoding=utf-8
 set expandtab

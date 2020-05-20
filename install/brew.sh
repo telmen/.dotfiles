@@ -28,6 +28,7 @@ brew install \
   git-extras \
   git-lfs \
   git-standup \
+  git-crypt \
   gnu-sed \
   gnupg \
   gnutls \
@@ -57,22 +58,20 @@ brew install \
   xctool \
   git-delta
 
-brew install homebrew/dupes/nano
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
 brew install z
 brew install entr
 brew install the_silver_searcher
+brew install exa
 brew install fzf
 brew install pv
 brew install terminal-notifier
-brew install android-platform-tools
 brew install pidcat
 brew install ncdu
 
 # brew casks
 
-brew tap caskroom/caskroom
+brew tap homebrew/cask-caskroom
+
 brew cask install \
   fastlane \
   qlimagesize \
@@ -96,7 +95,9 @@ brew cask install \
   firefox \
   google-chrome \
   spotify \
-  gpgtools
+  gpg-suite \
+  android-sdk \
+  android-platform-tools
 
 brew tap homebrew/cask-fonts
 
