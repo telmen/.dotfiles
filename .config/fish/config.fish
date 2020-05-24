@@ -1,4 +1,3 @@
-## SETTINGS
 set fish_greeting
 set -gx FZF_DEFAULT_COMMAND 'rg --files --follow --hidden -g !.git'
 

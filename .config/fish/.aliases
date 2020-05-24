@@ -1,18 +1,13 @@
-#compdef
-
 # React native
-
 abbr rn 'react-native'
 abbr rns 'react-native start'
 abbr rna 'react-native run-android'
 abbr rni 'react-native run-ios'
 
 # iOS devices
-
 abbr d 'instruments -s devices'
 
 # Android devices
-
 abbr ad 'adb devices'
 abbr adnetwork 'adb shell settings put global airplane_mode_on 1 && adb shell settings put global airplane_mode_on 0'
 
@@ -120,11 +115,10 @@ alias reload="exec $SHELL -l"
 alias path='echo -e $PATH/\\n'
 
 abbr ll 'exa --group-directories-first -Bhl'
-abbr ls 'exa'
+abbr ls 'exa -Bl'
+abbr l 'exa -Bl'
+abbr la 'exa -Bla'
 abbr v vim
-abbr vip '$EDITOR +PlugInstall +qall'
-abbr vup '$EDITOR +PlugUpdate'
-abbr vcp '$EDITOR +PlugClean +qall'
 abbr fz 'source ~/.config/fish/config.fish'
 abbr ff '$EDITOR ~/.config/fish/config.fish'
 abbr gg '$EDITOR ~/.gitconfig'
@@ -135,50 +129,10 @@ abbr ex '$EDITOR ~/.config/fish/.exports'
 abbr fn '$EDITOR ~/.config/fish/.fns'
 abbr cat bat
 abbr c 'code .'
+abbr s 'subl .'
 abbr copy 'pbcopy'
 abbr paste 'pbpaste'
 abbr rm 'rm -i'
 abbr o 'open .'
 abbr b 'open -a "Google Chrome"'
-
-function md
-  mkdir -p -- "$argv"
-  cd -- "$argv"
-end
-
-function dev
-  cd "$HOME/dev/$argv"
-end
-
-function fork
-  cd "$HOME/fork/$argv"
-end
-
-function work
-  cd "$HOME/work/$argv"
-end
-
-function 0x0
-  curl -F "file=@$argv" https://0x0.st
-end
-
-function ptoi
-  sips -s format icns $argv --out $argv.icns
-end
-
-function pgb
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-end
-
-function fish_prompt
-  set -l branch (pgb)
-  if test -z "$branch"
-    set branch ""
-  else
-    set branch " ($branch)"
-  end
-  set -l dir (basename $PWD)
-  echo -sn "▲ "
-  echo -sn "$dir"
-  echo -sn "$branch: "
-end
+abbr gds 'git diff --staged'

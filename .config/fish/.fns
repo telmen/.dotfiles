@@ -23,3 +23,47 @@ function mkcd
     mkdir $argv && cd $argv
   end
 end
+
+function st
+  command git status -sbu --show-stash
+  commandline -f repaint;
+end
+
+function ci
+  command git commit -S -v -m "$argv"
+  commandline -f repaint;
+end
+
+function md
+  mkdir -p -- "$argv"
+  cd -- "$argv"
+end
+
+for dir in work home fork dev src 
+	abbr "$dir" "cd $HOME/$dir/$argv"
+end
+
+function 0x0
+  curl -F "file=@$argv" https://0x0.st
+end
+
+function ptoi
+  sips -s format icns $argv --out $argv.icns
+end
+
+function pgb
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+end
+
+function fish_prompt
+  set -l branch (pgb)
+  if test -z "$branch"
+    set branch ""
+  else
+    set branch " ($branch)"
+  end
+  set -l dir (basename $PWD)
+  echo -sn "▲ "
+  echo -sn "$dir"
+  echo -sn "$branch: "
+end
