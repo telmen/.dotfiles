@@ -1,6 +1,5 @@
 {
-  "name": "rsms dark v2",
-  "author": "rsms",
+  "name": "dark v2",
   "variables": {
     "red": "hsl(5, 100%, 50%)",
     "orange": "hsl(27, 100%, 50%)",
@@ -8,7 +7,8 @@
     "green": "hsl(150, 100%, 43%)",
     "cyan": "hsl(180, 100%, 50%)",
     "blue": "hsl(210, 100%, 50%)",
-    // "transparent": "#ff000000",  // note: ff needed to force transparency
+    "pink": "hsl(320, 90%, 70%)",
+    "transparent": "#ff000000",  // note: ff needed to force transparency
 
     "fg": "#fff",
     "bg": "hsl(60, 5%, 8%)",
@@ -35,7 +35,7 @@
     "inactive_selection": "color(var(selection) alpha(0.2) saturation(0%))",
 
     // gutter
-    // "gutter": "#000", // defaults to background
+    "gutter": "#000", // defaults to background
     "gutter_foreground": "color(var(fg) alpha(0.3))",
     "line_highlight": "color(var(fg) alpha(0.12))",
     "line_diff_width": "2",  // width of diff lines (in dp)
@@ -52,7 +52,7 @@
     "find_highlight_foreground": "#000",
     "find_highlight": "var(yellow)",
     "misspelling": "color(var(red) lightness(65%))",
-    // "invisibles": "#000",  // defaults to color(foreground alpha(0.35))
+    "invisibles": "#000",  // defaults to color(foreground alpha(0.35))
 
     // brackets
     "brackets_options": "foreground underline",
@@ -251,14 +251,5 @@
       "foreground": "var(fg)",
       "background": "var(red)"
     },
-
-    // Example of Hashed Syntax Highlighting
-    // https://www.sublimetext.com/docs/3/color_schemes.html#hashed_syntax_highlighting
-    // Note: It seems that "source - punctuation" means "source minus punctuation", but
-    // I'm not sure. I can't find documentation on this.
-    // {
-    //   "scope": "source - punctuation - keyword",
-    //   "foreground": ["hsl(200, 60%, 70%)", "hsl(330, 60%, 70%)"]
-    // }
   ]
 }
