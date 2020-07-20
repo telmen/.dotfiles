@@ -101,6 +101,6 @@ brew cask install \
 
 brew tap homebrew/cask-fonts
 
-brew cask install font-jetbrains-mono font-source-code-pro
+brew cask install font-iosevka
 
 brew cleanup
