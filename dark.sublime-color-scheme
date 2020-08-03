@@ -59,10 +59,6 @@
     "bracket_contents_options": "foreground",
     "brackets_foreground": "var(cursor)",
     "bracket_contents_foreground": "var(cursor)",
-
-    // canvas shadow (indicates scroll)
-    "shadow": "color(var(cursor) alpha(0.8))",
-    "shadow_width": "5",
   },
   "rules": [
     {
