@@ -1,5 +1,5 @@
 {
-  "name": "dark v2",
+  "name": "dark",
   "variables": {
     "red": "hsl(5, 100%, 50%)",
     "orange": "hsl(27, 100%, 50%)",
@@ -35,7 +35,7 @@
     "inactive_selection": "color(var(selection) alpha(0.2) saturation(0%))",
 
     // gutter
-    "gutter": "#000", // defaults to background
+    "gutter": "var(bg)", // defaults to background
     "gutter_foreground": "color(var(fg) alpha(0.3))",
     "line_highlight": "color(var(fg) alpha(0.12))",
     "line_diff_width": "2",  // width of diff lines (in dp)

@@ -16,7 +16,7 @@ set -gx REACT_EDITOR vim
 set -gx LC_CTYPE en_US.UTF-8
 set -gx G_ENABLE_DIAGNOSTIC 1
 set -gx GTK_THEME Adwaita:dark
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 set -gx ANDROID_NDK_HOME $ANDROID_HOME/ndk-andcamera
 set -gx OpenCV_ANDROID_HOME $ANDROID_HOME/opencv
