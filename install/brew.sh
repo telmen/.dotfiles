@@ -8,12 +8,15 @@ BREW_PREFIX=$(brew --prefix)
 brew install coreutils
 brew install moreutils
 brew install findutils
-brew install gnu-sed --with-default-names
+brew install gnu-sed
+
+brew tap wix/brew
 
 # Do some cleaning
 
+brew install applesimutils
+
 brew install \
-  applesimutils \
   autoconf \
   automake \
   bat \
@@ -22,6 +25,7 @@ brew install \
   curl-openssl \
   dex2jar \
   dive \
+  fastlane \
   exercism \
   gcc \
   git \
@@ -56,27 +60,27 @@ brew install \
   git-flow \
   vim \
   xctool \
-  git-delta
-
-brew install z
-brew install entr
-brew install the_silver_searcher
-brew install exa
-brew install fzf
-brew install pv
-brew install terminal-notifier
-brew install pidcat
-brew install ncdu
+  git-delta \
+  z \
+  entr \
+  the_silver_searcher \
+  exa \
+  fzf \
+  pv \
+  terminal-notifier \
+  pidcat \
+  ncdu
 
 # brew casks
 
-brew tap homebrew/cask-caskroom
-
 brew cask install \
-  fastlane \
+  alfred \
   qlimagesize \
   quicklookase \
   fing \
+  enpass \
+  dozer \
+  discord \
   qlmarkdown \
   react-native-debugger \
   qlstephen \
@@ -97,10 +101,13 @@ brew cask install \
   spotify \
   gpg-suite \
   android-sdk \
-  android-platform-tools
-
-brew tap homebrew/cask-fonts
-
-brew cask install font-iosevka
+  android-platform-tools \
+  telegram \
+  visual-studio-code \
+  clipy \
+  sip \
+  itsycal \
+  figma \
+  tunnelbear 
 
 brew cleanup
