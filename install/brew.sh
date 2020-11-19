@@ -27,6 +27,9 @@ brew install \
   dive \
   fastlane \
   exercism \
+  gpg \
+  gpg2 \
+  pinentry-mac \
   gcc \
   git \
   git-extras \
@@ -36,9 +39,9 @@ brew install \
   gnu-sed \
   gnupg \
   gnutls \
-  highlight \
   htop \
   httpie \
+  highlight \
   hub \
   imagemagick \
   jq \
@@ -75,12 +78,12 @@ brew install \
 
 brew cask install \
   alfred \
+  qlcolorcode \
   qlimagesize \
   quicklookase \
   fing \
+  hiddenbar \
   enpass \
-  dozer \
-  discord \
   qlmarkdown \
   react-native-debugger \
   qlstephen \
@@ -88,7 +91,6 @@ brew cask install \
   kap \
   qlvideo \
   suspicious-package \
-  qlcolorcode \
   quicklook-json \
   webpquicklook \
   rectangle \
@@ -108,6 +110,7 @@ brew cask install \
   sip \
   itsycal \
   figma \
-  tunnelbear 
+  tunnelbear \
+  adoptopenjdk
 
 brew cleanup
