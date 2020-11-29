@@ -7,7 +7,7 @@ function zippy
 end
 
 function size
-  du -sh $argv[1]
+  du -sh $argv[1] || .
 end
 
 function perms
@@ -27,11 +27,10 @@ end
 function st
   command git status -sbu --show-stash
   commandline -f repaint;
-end
+end 
 
-function ci
-  command git commit -S -v -m "$argv"
-  commandline -f repaint;
+function ci 
+  command git commit -S -v -m "$argv" commandline -f repaint;
 end
 
 function md
@@ -39,7 +38,7 @@ function md
   cd -- "$argv"
 end
 
-for dir in work home fork dev src 
+for dir in work home fork dev src code
 	abbr "$dir" "cd $HOME/$dir/$argv"
 end
 
@@ -66,4 +65,25 @@ function fish_prompt
   echo -sn "▲ "
   echo -sn "$dir"
   echo -sn "$branch: "
+end
+
+function fish_mode_prompt --description 'Displays the current mode'
+  if test "$fish_key_bindings" = "fish_vi_key_bindings"
+    switch $fish_bind_mode
+      case default
+        set_color --bold red
+        echo 🅽
+      case insert
+        set_color --bold green
+        echo 🅸
+      case replace_one
+        set_color --bold green
+        echo 🆁
+      case visual
+        set_color --bold brmagenta
+        echo 🆅
+    end
+    set_color normal
+    printf " "
+  end
 end

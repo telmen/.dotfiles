@@ -23,9 +23,9 @@
   number = true
   zero-style = dim syntax
   plus-style = "#75daa9" normal
-  minus-style = "#e5b0ff" normal
+  minus-style = "#ffa7da" normal
   plus-emph-style = "#ffffff" "#75daa9"
-  minus-emph-style = "#ffffff" "#e5b0ff"
+  minus-emph-style = "#ffffff" "#ffa7da"
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
