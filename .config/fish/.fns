@@ -62,7 +62,6 @@ function fish_prompt
     set branch " ($branch)"
   end
   set -l dir (basename $PWD)
-  echo -sn "▲ "
   echo -sn "$dir"
   echo -sn "$branch: "
 end
@@ -86,4 +85,11 @@ function fish_mode_prompt --description 'Displays the current mode'
     set_color normal
     printf " "
   end
+end
+
+function jdk
+	set java_version $argv
+  set -e JAVA_HOME
+	set -Ux JAVA_HOME (/usr/libexec/java_home -v $java_version)
+	java -version
 end
