@@ -22,10 +22,10 @@
   syntax-theme = TwoDark
   number = true
   zero-style = dim syntax
-  plus-style = "#75daa9" normal
-  minus-style = "#ffa7da" normal
-  plus-emph-style = "#ffffff" "#75daa9"
-  minus-emph-style = "#ffffff" "#ffa7da"
+  plus-style = "#39D56B" normal
+  minus-style = "#EA4A5A" normal
+  plus-emph-style = "#ffffff" "#39D56B"
+  minus-emph-style = "#ffffff" "#EA4A5A"
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
