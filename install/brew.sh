@@ -76,19 +76,16 @@ brew install \
 
 # brew casks
 
-brew cask install \
-  alfred \
+brew install --cask \
+  appcleaner \
+  brave-browser \
   qlcolorcode \
   qlimagesize \
   quicklookase \
-  fing \
   hiddenbar \
   enpass \
   qlmarkdown \
-  react-native-debugger \
   qlstephen \
-  reactotron \
-  kap \
   qlvideo \
   suspicious-package \
   quicklook-json \
@@ -96,21 +93,22 @@ brew cask install \
   rectangle \
   gyazo \
   sublime-text \
+  macs-fan-control \
   imageoptim \
   imagealpha \
   firefox \
-  google-chrome \
   spotify \
   gpg-suite \
   android-sdk \
   android-platform-tools \
   telegram \
+  stremio \
+  windscribe \
   visual-studio-code \
   clipy \
   sip \
   itsycal \
   figma \
-  tunnelbear \
-  adoptopenjdk
+  adoptopenjdk8
 
 brew cleanup
