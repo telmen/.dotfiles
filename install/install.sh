@@ -21,15 +21,8 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
   exit 1
 fi
 
-echo "Installing common programs"
-. $(pwd -P)/common.sh
 echo "Starting config files sync"
 . $(pwd -P)/sync.sh
-
-# install n - node version manager
-curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-bash n lts
-[[ -f n ]] && rm -rf n
 
 # set fish as default shell
 echo "Setting fish shell as default one"

@@ -12,20 +12,15 @@ brew install gnu-sed
 
 brew tap wix/brew
 
-# Do some cleaning
-
-brew install applesimutils
-
 brew install \
+  applesimutils \
   autoconf \
   automake \
   bat \
   cmake \
   cocoapods \
   curl-openssl \
-  dex2jar \
   dive \
-  fastlane \
   exercism \
   gpg \
   gpg2 \
@@ -46,14 +41,10 @@ brew install \
   imagemagick \
   jq \
   nmap \
-  node \
   openssl \
-  python \
   readline \
   rename \
   ripgrep \
-  ruby \
-  sqlite \
   ssh-copy-id \
   watchman \
   wget \
@@ -72,13 +63,14 @@ brew install \
   pv \
   terminal-notifier \
   pidcat \
-  ncdu
+  ncdu \ 
+  n
 
 # brew casks
 
 brew install --cask \
   appcleaner \
-  brave-browser \
+  google-chrome \
   qlcolorcode \
   qlimagesize \
   quicklookase \
@@ -109,6 +101,12 @@ brew install --cask \
   sip \
   itsycal \
   figma \
-  adoptopenjdk8
+  adoptopenjdk8 \
+    
+echo "Installing JetBrains Mono font..."
+
+brew tap homebrew/cask-fonts
+
+brew install --cask font-jetbrains-mono
 
 brew cleanup
