@@ -76,3 +76,5 @@
   format = * %s by %an
 [tag]
   gpgsign = true
+[init]
+	defaultBranch = main

@@ -114,8 +114,8 @@ alias reload="exec $SHELL -l"
 # Print each PATH entry on a separate line
 alias path='echo -e $PATH/\\n'
 
-abbr ll 'exa --group-directories-first -Bhl'
-abbr ls 'exa -Bl'
+abbr ls 'exa --group-directories-first -Bhl'
+abbr lsa 'exa --group-directories-first -Bhla'
 abbr l 'exa -Bl'
 abbr la 'exa -Bla'
 abbr v vim

@@ -13,6 +13,7 @@ brew install gnu-sed
 brew tap wix/brew
 
 brew install \
+  vcprompt \
   applesimutils \
   autoconf \
   automake \
@@ -71,6 +72,9 @@ brew install \
 brew install --cask \
   appcleaner \
   google-chrome \
+  firefox \
+  brave-browser \
+  stretchly \
   qlcolorcode \
   qlimagesize \
   quicklookase \
@@ -88,7 +92,6 @@ brew install --cask \
   macs-fan-control \
   imageoptim \
   imagealpha \
-  firefox \
   spotify \
   gpg-suite \
   android-sdk \

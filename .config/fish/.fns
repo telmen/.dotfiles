@@ -55,11 +55,11 @@ function pgb
 end
 
 function fish_prompt
-  set -l branch (pgb)
+  set -l branch (vcprompt)
   if test -z "$branch"
     set branch ""
   else
-    set branch " ($branch)"
+    set branch "$branch"
   end
   set -l dir (basename $PWD)
   echo -sn "$dir"

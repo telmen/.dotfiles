@@ -1,10 +1,10 @@
 set -gx GPG_TTY (tty)
 set -gx EDITOR vim
-
 set -gx CLICOLOR 1
+set -gx VCPROMPT_FORMAT [%b]
 set -gx LSCOLORS ExFxBxDxCxegedabagacad
 set -gx LANG en_US.UTF-8
-set -gx BAT_THEME "zenburn"
+set -gx BAT_THEME "gruvbox"
 
 set -gx NPM_CONFIG_PREFIX ~/.npm-global
 set -gx CUSTOM_BIN $HOME/bin
