@@ -1,13 +1,12 @@
 set -gx GPG_TTY (tty)
 set -gx EDITOR vim
 set -gx CLICOLOR 1
-set -gx VCPROMPT_FORMAT [%b]
+set -gx VCPROMPT_FORMAT \(%b\)
 set -gx LSCOLORS ExFxBxDxCxegedabagacad
 set -gx LANG en_US.UTF-8
 set -gx BAT_THEME "gruvbox"
 
 set -gx NPM_CONFIG_PREFIX ~/.npm-global
-set -gx CUSTOM_BIN $HOME/bin
 set -gx RUBY_GEM /usr/lib/ruby/gems/2.3.0/bin
 set -gx MANPATH "/usr/local/man:$MANPATH"
 set -gx MANPAGER 'less -X'
@@ -21,7 +20,7 @@ set -gx ANDROID_NDK_HOME $ANDROID_HOME/ndk-andcamera
 set -gx OpenCV_ANDROID_HOME $ANDROID_HOME/opencv
 set -gx PYTHON_HOME $HOME/Library/Python/3.7/bin
 set -gx ANDROID_BIN $ANDROID_HOME/tools/bin/
-set -gx APPS $CUSTOM_BIN:$OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+set -gx APPS OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 set -gx YARN "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
 set -gx OPEN_SSL "/usr/local/opt/openssl/bin:$PATH"
 set -gx RUBY "/usr/local/opt/ruby/bin"

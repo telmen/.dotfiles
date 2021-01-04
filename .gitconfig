@@ -8,6 +8,7 @@
   clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
   graph = log --graph --all --decorate --stat --date=iso
   unstage = reset --
+  synq = "!fn() { git fetch --all; git rebase ${1:-upstream}/${2:-$(git branch --show-current)}; }; fn"
 [user]
   name = telmen
   email = flyinvoke@gmail.com
