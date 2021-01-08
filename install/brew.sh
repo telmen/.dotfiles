@@ -106,8 +106,6 @@ brew install --cask \
   figma \
   adoptopenjdk8 \
     
-echo "Installing JetBrains Mono font..."
-
 brew tap homebrew/cask-fonts
 
 brew install --cask font-jetbrains-mono

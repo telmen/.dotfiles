@@ -16,11 +16,10 @@ set -gx LC_CTYPE en_US.UTF-8
 set -gx G_ENABLE_DIAGNOSTIC 1
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
-set -gx ANDROID_NDK_HOME $ANDROID_HOME/ndk-andcamera
 set -gx OpenCV_ANDROID_HOME $ANDROID_HOME/opencv
 set -gx PYTHON_HOME $HOME/Library/Python/3.7/bin
 set -gx ANDROID_BIN $ANDROID_HOME/tools/bin/
-set -gx APPS OpenCV_ANDROID_HOME:$ANDROID_NDK_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+set -gx APPS OpenCV_ANDROID_HOME:./vendor/bin:./node_modules/.bin/:$ANDROID_HOME:$ANDROID_HOME/platform-tools:$ANDROID_BIN:$PYTHON_HOME:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 set -gx YARN "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin"
 set -gx OPEN_SSL "/usr/local/opt/openssl/bin:$PATH"
 set -gx RUBY "/usr/local/opt/ruby/bin"

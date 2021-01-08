@@ -79,3 +79,5 @@
   gpgsign = true
 [init]
 	defaultBranch = main
+[http "http://git.lend.loc"]
+	sslVerify = false
