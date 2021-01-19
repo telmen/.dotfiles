@@ -13,6 +13,10 @@ brew install gnu-sed
 brew tap wix/brew
 
 brew install \
+  openconnect \
+  youtube-dl \
+  ffmpeg \
+  gh \
   vcprompt \
   applesimutils \
   autoconf \
