@@ -74,6 +74,7 @@ brew install \
 # brew casks
 
 brew install --cask \
+  monitorcontrol \
   appcleaner \
   google-chrome \
   firefox \
