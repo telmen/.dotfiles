@@ -1,23 +1,37 @@
-[alias]
-  logn = log --no-merges
-  uncommit = reset HEAD~
-  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
-  praise = blame
-  overview = log --all --since='2 weeks' --oneline --no-merges
-  me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
-  clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
-  graph = log --graph --all --decorate --stat --date=iso
-  unstage = reset --
-  synq = "!fn() { git fetch --all; git rebase ${1:-upstream}/${2:-$(git branch --show-current)}; }; fn"
 [user]
   name = telmen
   email = flyinvoke@gmail.com
   signingKey = 2D3B964912A6D8DB
+
+[github]
+  user = telmen
+
+[alias]
+  clog = "!fn() { git log --oneline --no-merges "$1"..HEAD; }; fn"
+  d = diff
+  discard = reset --hard HEAD
+  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
+  graph = log --graph --all --decorate --stat --date=iso
+  last = log -n 10
+  logn = log --no-merges
+  me = log --all --oneline --no-merges --author=flyinvoke@gmail.com
+  overview = log --all --since='2 weeks' --oneline --no-merges
+  praise = blame
+  rmtag = "!sh -c 'git tag -d $1; git push origin :refs/tags/$1'"
+  sign = commit -S -m
+  signtag = 'tag -s -m ""'
+  synq = "!fn() { git fetch --all; git rebase ${1:-upstream}/${2:-$(git branch --show-current)}; }; fn"
+  uncommit = reset HEAD~
+  unstage = reset --
+  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+
 [core]
   editor = vim
   autocrlf = input
   pager = delta
   trustctime = false
+  excludesfile = ~/.gitignore_global
+
 [delta]
   features = line-numbers decorations
   syntax-theme = TwoDark
@@ -27,6 +41,7 @@
   minus-style = "#EA4A5A" normal
   plus-emph-style = "#ffffff" "#39D56B"
   minus-emph-style = "#ffffff" "#EA4A5A"
+
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
@@ -38,46 +53,72 @@
   line-numbers-right-style = cyan
   line-numbers-minus-style = 124
   line-numbers-plus-style = 28
+
 [interactive]
   diffFilter = delta --color-only
+
 [diff]
   tool = vimdiff
+
 [difftool]
   prompt = false
+
 [push]
-  default = current
+  default = simple
+
 [branch]
   autosetuprebase = always
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+
 [commit]
   gpgsign = true
   verbose = true
+
 [gpg]
   program = gpg
+
 [rebase]
   autoStash = true
+
 [merge]
   ff = no
   commit = no
   tool = vimdiff
   conflictstyle = diff3
+
 [mergetool "vimdiff"]
   cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
   prompt = false
   keepBackup = false
-[format]
+
+[advice]
   pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+  statusHints = false
+
+[format]
+  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(bold yellow)%GK%Creset
+  graph = true
+
 [log]
+  abbrevCommit = true
   date = auto:human
+
 [changelog]
   format = * %s by %an
+
 [tag]
   gpgsign = true
+
 [init]
-	defaultBranch = main
+	defaultBranch = master
+
+[pull]
+  rebase = true
+
 [http "http://git.lend.loc"]
 	sslVerify = false
