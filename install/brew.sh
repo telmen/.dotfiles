@@ -13,7 +13,9 @@ brew install gnu-sed
 brew tap wix/brew
 
 brew install \
+  mas \
   openconnect \
+  bear \
   youtube-dl \
   ffmpeg \
   gh \
@@ -109,6 +111,7 @@ brew install --cask \
   sip \
   itsycal \
   figma \
+  discord \
   adoptopenjdk8 \
     
 brew tap homebrew/cask-fonts
