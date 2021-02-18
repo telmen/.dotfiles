@@ -76,6 +76,7 @@ brew install \
 # brew casks
 
 brew install --cask \
+  paw \
   monitorcontrol \
   appcleaner \
   google-chrome \
