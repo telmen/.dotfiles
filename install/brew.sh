@@ -76,6 +76,7 @@ brew install \
 # brew casks
 
 brew install --cask \
+  iterm2 \
   paw \
   monitorcontrol \
   appcleaner \
