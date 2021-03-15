@@ -31,6 +31,8 @@
   pager = delta
   trustctime = false
   excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
+  whitespace = trailing-space,space-before-tab
 
 [delta]
   features = line-numbers decorations
@@ -59,15 +61,33 @@
 
 [diff]
   tool = vimdiff
+  renames = copies
+  mnemonicprefix = true
+  algorithm = patience
+  indentHeuristic = true
+  colorMoved = zebra
 
 [difftool]
   prompt = false
+
+[diff "plist"]
+  textconv = plutil -convert xml1 -o -
+
+[diff "provision"]
+  textconv = security cms -D -i
+
+[diff "exif"]
+  textconv = exiftool
+
+[diff "zip"]
+  textconv = unzip -c -a
 
 [push]
   default = simple
 
 [branch]
   autosetuprebase = always
+  autosetupmerge = true
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -83,12 +103,16 @@
   program = gpg
 
 [rebase]
-  autoStash = true
+  autostash = true
+  autosquash = true
+  stat = true
 
 [merge]
   ff = no
   commit = no
   tool = vimdiff
+  log = true
+  stat = true
   conflictstyle = diff3
 
 [mergetool "vimdiff"]
@@ -99,6 +123,7 @@
 [advice]
   pretty = format: %h %Cblue%ad%Creset %ae %Cgreen%s%Creset
   statusHints = false
+  waitingForEditor = false
 
 [format]
   pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(bold yellow)%GK%Creset
@@ -107,6 +132,7 @@
 [log]
   abbrevCommit = true
   date = auto:human
+  follow = true
 
 [changelog]
   format = * %s by %an
@@ -115,10 +141,42 @@
   gpgsign = true
 
 [init]
-	defaultBranch = master
+	defaultBranch = main
 
 [pull]
   rebase = true
 
 [http "http://git.lend.loc"]
 	sslVerify = false
+
+[branch "main"]
+  pushRemote = NOPE
+
+[branch "master"]
+  pushRemote = NOPE
+
+[checkout]
+  guess = true
+
+[pager]
+  branch = false
+
+[grep]
+  column = true
+  lineNumber = true
+
+[status]
+  showUntrackedFiles = all
+
+[stash]
+  showPatch = true
+
+[rerere]
+  enabled = true
+  autoupdate = true
+
+[fetch]
+  prune = true
+
+[help]
+  autocorrect = 1

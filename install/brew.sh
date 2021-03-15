@@ -13,6 +13,8 @@ brew install gnu-sed
 brew tap wix/brew
 
 brew install \
+  exiftool \
+  loc \
   mas \
   openconnect \
   bear \

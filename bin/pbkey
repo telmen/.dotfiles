@@ -1,0 +1,15 @@
+#!/bin/sh
+
+key="$HOME/.ssh/id_rsa.pub"
+if [ ! -e "$key" ]; then
+  echo "No publick key exists in $key"
+  exit 1
+fi
+
+if which pbcopy > /dev/null; then
+  pbcopy < "$key"
+  exit 0
+fi
+
+echo "No copy handler"
+exit 1

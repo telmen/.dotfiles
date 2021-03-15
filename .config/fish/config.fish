@@ -11,3 +11,4 @@ if test -e (dirname (status -f))/.fns
   source (dirname (status -f))/.fns
 end
 rvm default
+test -e /Users/telmen/.iterm2_shell_integration.fish ; and source /Users/telmen/.iterm2_shell_integration.fish ; or true
