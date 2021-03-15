@@ -48,15 +48,15 @@ answer_is_yes() {
 
 dotfiles() {
   # Find all . files in this folder
-  files_to_symlink=$(find . -type f -maxdepth 1 -name ".*" -not -name .DS_Store -not -name .git -not -name .osx | sed -e 's|//|/|' | sed -e 's|./.|.|')
-  files_to_symlink="$files_to_symlink .config/fish bin"
+  files_to_symlink=$(find config -type f -maxdepth 1 -exec basename {} \;)
+  files_to_symlink="$files_to_symlink"
   local i=""
   local sourceFile=""
   local targetFile=""
 
   for i in ${files_to_symlink[@]}; do
-    sourceFile="$(pwd)/$i"
-    targetFile="$HOME/$(printf "%s" "$i")"
+    sourceFile="$(pwd)/config/$i"
+    targetFile="$HOME/.$(printf "%s" "$i")"
 
     if [ -e "$targetFile" ]; then
       if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
@@ -81,6 +81,30 @@ if answer_is_yes; then
   ask_for_confirmation "Sync dotfiles?"
   if answer_is_yes; then
     dotfiles
+  fi
+
+  ask_for_confirmation "Sync 'bin' directory?"
+
+  if answer_is_yes; then
+    if [ -e "$HOME/bin" ]; then
+      ask_for_confirmation "$HOME/bin directory already exists, do you want to overwrite it?"
+      cp -r $HOME/bin $HOME/bin-backup
+      rm -rf $HOME/bin
+      print_info "Created a backup of old 'bin' directory at $HOME/bin-backup"
+    fi
+    execute "ln -fs $(pwd)/bin $HOME/bin" "$(pwd)/bin → $HOME/bin"
+  fi
+
+  ask_for_confirmation "Sync fish shell config?"
+
+  if answer_is_yes; then
+    if [ -e "$HOME/.config/fish" ]; then
+      ask_for_confirmation "$HOME/.config/fish directory already exists, do you want to overwrite it?"
+      cp -r $HOME/.config/fish $HOME/fish-backup
+      rm -rf $HOME/.config/fish
+      print_info "Created a backup of old fish config directory at $HOME/fish-backup"
+    fi
+    execute "ln -fs $(pwd)/config/fish $HOME/.config/fish" "$HOME/.config/fish → $(pwd)/config/fish"
   fi
 fi
 

@@ -30,7 +30,7 @@
   autocrlf = input
   pager = delta
   trustctime = false
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   whitespace = trailing-space,space-before-tab
 
