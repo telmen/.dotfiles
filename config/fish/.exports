@@ -4,7 +4,7 @@ set -gx CLICOLOR 1
 set -gx VCPROMPT_FORMAT \(%b\)
 set -gx LSCOLORS ExFxBxDxCxegedabagacad
 set -gx LANG en_US.UTF-8
-set -gx BAT_THEME "gruvbox"
+set -gx BAT_THEME "Sublime Snazzy"
 
 set -gx NPM_CONFIG_PREFIX ~/.npm-global
 set -gx RUBY_GEM /usr/lib/ruby/gems/2.3.0/bin
