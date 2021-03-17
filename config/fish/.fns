@@ -7,7 +7,7 @@ function zippy
 end
 
 function size
-  du -sh $argv[1] || .
+  du -sh $argv || .
 end
 
 function perms

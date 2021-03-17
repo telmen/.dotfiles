@@ -31,8 +31,5 @@ typings/
 *.ignored/
 *.ignored.*
 
-# git
-*.patch
-
 # eslint
 .eslintcache
