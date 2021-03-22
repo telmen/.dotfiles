@@ -5,6 +5,7 @@ set -gx VCPROMPT_FORMAT \(%b\)
 set -gx LSCOLORS ExFxBxDxCxegedabagacad
 set -gx LANG en_US.UTF-8
 set -gx BAT_THEME "Sublime Snazzy"
+set -gx TERM xterm-256color
 
 set -gx NPM_CONFIG_PREFIX ~/.npm-global
 set -gx GEM_HOME $HOME/.gem
