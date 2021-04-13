@@ -1,8 +1,0 @@
-#!/bin/sh
-
-pw=$(security find-generic-password -a ${USER} -s andsystems.vpn.pass -w)
-address=$(security find-generic-password -a ${USER} -s andsystems.vpn.address -w)
-hash=$(security find-generic-password -a ${USER} -s andsystems.vpn.hash -w)
-
-echo "Connecting to AND Systems VPN..."
-echo $pw | sudo openconnect -b -u telmen --passwd-on-stdin --protocol=gp $address --reconnect-timeout 86400 --servercert pin-sha256:$hash
