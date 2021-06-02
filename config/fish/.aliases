@@ -116,8 +116,8 @@ alias path='echo -e $PATH/\\n'
 
 abbr ls 'exa --group-directories-first -Bhl'
 abbr lsa 'exa --group-directories-first -Bhla'
-abbr l 'exa -Bl'
-abbr la 'exa -Bla'
+abbr l 'exa --group-directories-first -Bl'
+abbr la 'exa --group-directories-first -Bla'
 abbr v vim
 abbr fz 'source ~/.config/fish/config.fish'
 abbr ff '$EDITOR ~/.config/fish/config.fish'

@@ -31,4 +31,6 @@ echo "Starting config files sync"
 echo "Setting fish shell as default one"
 chsh -s $(which fish)
 
-echo "Done. Reload your terminal."
+source  ~/.config/fish/config.fish
+
+echo "Done."

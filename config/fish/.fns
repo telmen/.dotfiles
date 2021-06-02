@@ -38,7 +38,7 @@ function md
   cd -- "$argv"
 end
 
-for dir in work home fork dev src code
+for dir in desktop developer plex downloads documents
 	abbr "$dir" "cd $HOME/$dir/$argv"
 end
 

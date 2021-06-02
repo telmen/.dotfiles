@@ -31,8 +31,6 @@ brew install \
   curl-openssl \
   dive \
   exercism \
-  gpg \
-  gpg2 \
   pinentry-mac \
   gcc \
   git \

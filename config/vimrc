@@ -100,3 +100,4 @@ nnoremap <RightMouse> "+]p
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 nnoremap Q :qa!<cr>
+colorscheme ron
