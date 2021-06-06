@@ -131,6 +131,8 @@ abbr cat bat
 abbr vs 'code'
 abbr vs. 'code .'
 abbr s 'subl'
+abbr st 'subl'
+abbr st. 'subl .'
 abbr s. 'subl .'
 abbr copy 'pbcopy'
 abbr paste 'pbpaste'

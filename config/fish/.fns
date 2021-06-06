@@ -24,11 +24,6 @@ function mkcd
   end
 end
 
-function st
-  command git status -sbu --show-stash
-  commandline -f repaint;
-end 
-
 function ci 
   command git commit -S -v -m "$argv" commandline -f repaint;
 end
