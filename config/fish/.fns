@@ -57,6 +57,7 @@ function fish_prompt
     set branch "$branch"
   end
   set -l dir (basename $PWD)
+  echo -sn "∆ "
   echo -sn "$dir"
   echo -sn "$branch: "
 end
