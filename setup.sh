@@ -28,7 +28,7 @@ echo "Starting config files sync"
 . $(pwd -P)/sync.sh
 
 # set fish shell as default shell
-echo "Setting fish shell as default one"
+echo "Setting fish as default shell"
 chsh -s $(which fish)
 
 source  ~/.config/fish/config.fish

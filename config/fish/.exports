@@ -7,6 +7,7 @@ set -gx LANG en_US.UTF-8
 set -gx BAT_THEME "Sublime Snazzy"
 set -gx TERM xterm-256color
 
+set -gx N_PREFIX ~/n
 set -gx NPM_CONFIG_PREFIX ~/.npm-global
 set -gx GEM_HOME $HOME/.gem
 set -gx RUBY_GEM /usr/lib/ruby/gems/2.3.0/bin
@@ -26,4 +27,4 @@ set -gx YARN "$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/
 set -gx OPEN_SSL "/usr/local/opt/openssl/bin"
 set -gx RUBY "/usr/local/opt/ruby/bin"
 set -gx RVM "$HOME/.rvm/bin"
-set -gx PATH "/usr/local/sbin:$GEM_HOME/bin:$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS:$NPM_CONFIG_PREFIX/bin"
+set -gx PATH "$N_PREFIX/bin:usr/local/sbin:$GEM_HOME/bin:$PATH:$YARN:$OPEN_SSL:$RUBY:$RUBY_GEM:$RVM:$APPS:$NPM_CONFIG_PREFIX/bin"
