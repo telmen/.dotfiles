@@ -143,4 +143,5 @@ abbr b 'open -a "Google Chrome"'
 abbr gds 'git diff --staged'
 abbr scr 'screen'
 abbr scrr 'screen -R'
+abbr rg 'rg --hidden'
 
