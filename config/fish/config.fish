@@ -10,4 +10,3 @@ end
 if test -e (dirname (status -f))/.fns
   source (dirname (status -f))/.fns
 end
-rvm default

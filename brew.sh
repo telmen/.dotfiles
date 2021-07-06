@@ -11,6 +11,7 @@ brew install findutils
 brew install gnu-sed
 
 brew tap wix/brew
+brew tap homebrew/cask-fonts
 
 brew install \
   exiftool \
@@ -115,9 +116,9 @@ brew install --cask \
   figma \
   discord \
   adoptopenjdk8 \
-    
-brew tap homebrew/cask-fonts
 
-brew install --cask font-jetbrains-mono
+brew install --cask \
+  adoptopenjdk8 \
+  font-jetbrains-mono
 
 brew cleanup
